@@ -1,0 +1,137 @@
+2026-06-08T15:52:37.146+07:00  INFO 96102 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Starting JobHubApplication using Java 17.0.9 with PID 96102 (/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main started by mac in /Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub)
+2026-06-08T15:52:37.149+07:00  INFO 96102 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-08T15:52:37.183+07:00  INFO 96102 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-08T15:52:37.184+07:00  INFO 96102 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-08T15:52:37.612+07:00  INFO 96102 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-08T15:52:37.647+07:00  INFO 96102 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 4 JPA repository interfaces.
+2026-06-08T15:52:37.954+07:00  INFO 96102 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-08T15:52:37.960+07:00  INFO 96102 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-08T15:52:37.960+07:00  INFO 96102 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-08T15:52:37.981+07:00  INFO 96102 --- [JobHub] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 797 ms
+2026-06-08T15:52:38.063+07:00  INFO 96102 --- [JobHub] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-08T15:52:38.099+07:00  INFO 96102 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-08T15:52:38.350+07:00  INFO 96102 --- [JobHub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-08T15:52:38.371+07:00  INFO 96102 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-08T15:52:38.676+07:00  INFO 96102 --- [JobHub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23d3f0a4
+2026-06-08T15:52:38.677+07:00  INFO 96102 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-08T15:52:38.731+07:00  WARN 96102 --- [JobHub] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-08T15:52:38.740+07:00  INFO 96102 --- [JobHub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/JobHub?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.4
+	Default catalog/schema: JobHub/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-08T15:52:39.473+07:00  INFO 96102 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-08T15:52:39.689+07:00  INFO 96102 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-08T15:52:39.752+07:00  INFO 96102 --- [JobHub] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-08T15:52:40.101+07:00  INFO 96102 --- [JobHub] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-08T15:52:40.101+07:00  WARN 96102 --- [JobHub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-08T15:52:40.141+07:00  WARN 96102 --- [JobHub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-08T15:52:40.663+07:00  INFO 96102 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-08T15:52:40.668+07:00  INFO 96102 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Started JobHubApplication in 3.906 seconds (process running for 4.464)
+2026-06-08T15:55:10.947+07:00  INFO 96102 --- [JobHub] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-08T15:55:10.948+07:00  INFO 96102 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-08T15:55:10.950+07:00  INFO 96102 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-06-08T15:55:10.971+07:00  WARN 96102 --- [JobHub] [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2026-06-08T15:57:48.287+07:00  WARN 96102 --- [JobHub] [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'refreshToken' for method parameter type String is not present]
+2026-06-08T15:58:31.118+07:00  WARN 96102 --- [JobHub] [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'refreshToken' for method parameter type String is not present]
+2026-06-08T16:01:27.132+07:00  WARN 96102 --- [JobHub] [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'refreshToken' for method parameter type String is not present]
+2026-06-08T16:01:32.674+07:00  WARN 96102 --- [JobHub] [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'refreshToken' for method parameter type String is not present]
+2026-06-08T16:01:53.609+07:00  WARN 96102 --- [JobHub] [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'refreshToken' for method parameter type String is not present]
+2026-06-08T16:02:10.825+07:00  WARN 96102 --- [JobHub] [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'refreshToken' for method parameter type String is not present]
+2026-06-08T16:02:15.521+07:00  INFO 96102 --- [JobHub] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-08T16:02:15.526+07:00  INFO 96102 --- [JobHub] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-08T16:02:15.529+07:00  INFO 96102 --- [JobHub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-08T16:02:15.533+07:00  INFO 96102 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-08T16:02:15.539+07:00  INFO 96102 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-08T16:02:18.370+07:00  INFO 96259 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Starting JobHubApplication using Java 17.0.9 with PID 96259 (/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main started by mac in /Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub)
+2026-06-08T16:02:18.372+07:00  INFO 96259 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-08T16:02:18.402+07:00  INFO 96259 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-08T16:02:18.403+07:00  INFO 96259 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-08T16:02:18.742+07:00  INFO 96259 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-08T16:02:18.772+07:00  INFO 96259 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 4 JPA repository interfaces.
+2026-06-08T16:02:19.070+07:00  INFO 96259 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-08T16:02:19.077+07:00  INFO 96259 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-08T16:02:19.077+07:00  INFO 96259 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-08T16:02:19.095+07:00  INFO 96259 --- [JobHub] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 692 ms
+2026-06-08T16:02:19.181+07:00  INFO 96259 --- [JobHub] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-08T16:02:19.221+07:00  INFO 96259 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-08T16:02:19.468+07:00  INFO 96259 --- [JobHub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-08T16:02:19.487+07:00  INFO 96259 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-08T16:02:19.670+07:00  INFO 96259 --- [JobHub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@480e9241
+2026-06-08T16:02:19.671+07:00  INFO 96259 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-08T16:02:19.711+07:00  WARN 96259 --- [JobHub] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-08T16:02:19.720+07:00  INFO 96259 --- [JobHub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/JobHub?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.4
+	Default catalog/schema: JobHub/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-08T16:02:20.307+07:00  INFO 96259 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-08T16:02:20.361+07:00  INFO 96259 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-08T16:02:20.413+07:00  INFO 96259 --- [JobHub] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-08T16:02:20.589+07:00  INFO 96259 --- [JobHub] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-08T16:02:20.590+07:00  WARN 96259 --- [JobHub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-08T16:02:20.620+07:00  WARN 96259 --- [JobHub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-08T16:02:20.996+07:00  INFO 96259 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-08T16:02:20.999+07:00  INFO 96259 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Started JobHubApplication in 3.011 seconds (process running for 3.546)
+2026-06-08T16:02:24.317+07:00  INFO 96259 --- [JobHub] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-08T16:02:24.318+07:00  INFO 96259 --- [JobHub] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-08T16:02:24.319+07:00  INFO 96259 --- [JobHub] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-08T16:04:07.264+07:00  INFO 96259 --- [JobHub] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-08T16:04:07.269+07:00  INFO 96259 --- [JobHub] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-08T16:04:07.272+07:00  INFO 96259 --- [JobHub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-08T16:04:07.275+07:00  INFO 96259 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-08T16:04:07.279+07:00  INFO 96259 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-08T16:04:09.616+07:00  INFO 96321 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Starting JobHubApplication using Java 17.0.9 with PID 96321 (/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main started by mac in /Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub)
+2026-06-08T16:04:09.620+07:00  INFO 96321 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-08T16:04:09.665+07:00  INFO 96321 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-08T16:04:09.666+07:00  INFO 96321 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-08T16:04:10.119+07:00  INFO 96321 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-08T16:04:10.146+07:00  INFO 96321 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 4 JPA repository interfaces.
+2026-06-08T16:04:10.426+07:00  INFO 96321 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-08T16:04:10.433+07:00  INFO 96321 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-08T16:04:10.433+07:00  INFO 96321 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-08T16:04:10.450+07:00  INFO 96321 --- [JobHub] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 783 ms
+2026-06-08T16:04:10.524+07:00  INFO 96321 --- [JobHub] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-08T16:04:10.555+07:00  INFO 96321 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-08T16:04:10.780+07:00  INFO 96321 --- [JobHub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-08T16:04:10.796+07:00  INFO 96321 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-08T16:04:10.948+07:00  INFO 96321 --- [JobHub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7ab91590
+2026-06-08T16:04:10.949+07:00  INFO 96321 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-08T16:04:10.979+07:00  WARN 96321 --- [JobHub] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-08T16:04:10.989+07:00  INFO 96321 --- [JobHub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/JobHub?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.4
+	Default catalog/schema: JobHub/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-08T16:04:11.551+07:00  INFO 96321 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-08T16:04:11.605+07:00  INFO 96321 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-08T16:04:11.650+07:00  INFO 96321 --- [JobHub] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-08T16:04:11.817+07:00  INFO 96321 --- [JobHub] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-08T16:04:11.818+07:00  WARN 96321 --- [JobHub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-08T16:04:11.848+07:00  WARN 96321 --- [JobHub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-08T16:04:12.210+07:00  INFO 96321 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-08T16:04:12.213+07:00  INFO 96321 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Started JobHubApplication in 2.875 seconds (process running for 3.311)
+2026-06-08T16:04:14.774+07:00  INFO 96321 --- [JobHub] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-08T16:04:14.775+07:00  INFO 96321 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-08T16:04:14.776+07:00  INFO 96321 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

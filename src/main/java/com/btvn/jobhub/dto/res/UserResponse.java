@@ -1,0 +1,14 @@
+package com.btvn.jobhub.dto.res;
+
+import com.btvn.jobhub.entity.enumType.RoleEnum;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class UserResponse {
+    private Long id;
+    private String email;
+    private RoleEnum role;
+    private Boolean isActive;
+}
