@@ -17,7 +17,7 @@ public class UserPrincipal implements UserDetails {
     private final String email;
     private final String password;
     private final Collection<? extends GrantedAuthority> authorities;
-    private final boolean isActive;
+    private final Boolean isActive;
 
     public static UserPrincipal create(User user) {
         // Ánh xạ RoleEnum trực tiếp thành Quyền trong Spring Security
