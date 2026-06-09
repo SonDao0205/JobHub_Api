@@ -19,10 +19,10 @@ public class JwtTokenProvider {
     @Value("${jwt-secret}")
     private String jwtSecret;
 
-    @Value("${jwt.access-expiration-ms}")
+    @Value("${jwt-access-expiration-ms}")
     private long jwtAccessExpirationMs;
 
-    @Value("${jwt.refresh-expiration-ms}")
+    @Value("${jwt-refresh-expiration-ms}")
     private long jwtRefreshExpirationMs;
 
     private Key key;

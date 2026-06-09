@@ -3,6 +3,7 @@ package com.btvn.jobhub.exception;
 import com.btvn.jobhub.dto.res.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -37,6 +38,16 @@ public class GlobalExceptionHandler {
                 ApiResponse.<Void>builder()
                         .success(false)
                         .message(ex.getMessage())
+                        .build()
+        );
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ApiResponse<Void>> handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                ApiResponse.<Void>builder()
+                        .success(false)
+                        .message("Dữ liệu gửi lên không đúng định dạng hoặc chứa giá trị không hợp lệ (Ví dụ: Sai định dạng RoleEnum).")
                         .build()
         );
     }

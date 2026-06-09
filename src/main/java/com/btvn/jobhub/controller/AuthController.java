@@ -7,6 +7,7 @@ import com.btvn.jobhub.dto.res.ApiResponse;
 import com.btvn.jobhub.dto.res.AuthResponse;
 import com.btvn.jobhub.dto.res.UserResponse;
 import com.btvn.jobhub.service.AuthService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class AuthController {
 
     // FR-04: Đăng ký tài khoản mới
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse<UserResponse>> registerUser(@RequestBody RegisterUserRequest request) {
+    public ResponseEntity<ApiResponse<UserResponse>> registerUser(@Valid @RequestBody RegisterUserRequest request) {
         UserResponse response = authService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 ApiResponse.<UserResponse>builder()
@@ -37,7 +38,7 @@ public class AuthController {
 
     // FR-01 / UC-01: Đăng nhập hệ thống
     @PostMapping("/login")
-    public ResponseEntity<ApiResponse<AuthResponse>> authenticateUser(@RequestBody LoginRequest request) {
+    public ResponseEntity<ApiResponse<AuthResponse>> authenticateUser(@Valid @RequestBody LoginRequest request) {
         AuthResponse response = authService.login(request);
         return ResponseEntity.ok(
                 ApiResponse.<AuthResponse>builder()
@@ -50,7 +51,7 @@ public class AuthController {
 
     // FR-02: Xoay vòng Token (Refresh Token)
     @PostMapping("/refresh")
-    public ResponseEntity<ApiResponse<AuthResponse>> refreshSession(@RequestBody RefreshTokenRequest request) {
+    public ResponseEntity<ApiResponse<AuthResponse>> refreshSession(@Valid @RequestBody RefreshTokenRequest request) {
         AuthResponse response = authService.refreshToken(request.getRefreshToken());
         return ResponseEntity.ok(
                 ApiResponse.<AuthResponse>builder()

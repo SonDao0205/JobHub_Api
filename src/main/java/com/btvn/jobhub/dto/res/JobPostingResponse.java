@@ -1,10 +1,14 @@
 package com.btvn.jobhub.dto.res;
 
 import com.btvn.jobhub.entity.enumType.JobStatusEnum;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class JobPostingResponse {
     private Long id;
@@ -12,5 +16,5 @@ public class JobPostingResponse {
     private String description;
     private String salaryRange;
     private JobStatusEnum status;
-    private Long employerId;
+    private UserResponse employer;
 }

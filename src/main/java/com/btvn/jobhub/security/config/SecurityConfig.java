@@ -58,13 +58,19 @@ public class SecurityConfig {
                 // 3. Ma trận kiểm soát phân quyền đường dẫn API dựa trên Role
                 .authorizeHttpRequests(auth -> auth
                         // Cấp quyền Public cho các cổng Auth hệ thống công cộng
-                        .requestMatchers("/api/auth/**").permitAll()
+                                // 1. Cổng mở hoàn toàn tự do (Public)
+                                .requestMatchers("/api/auth/**").permitAll()
 
-                        // Phân bổ chính xác theo Ma trận bảo mật
-                        .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api/v1/employer/**").hasRole("EMPLOYER")
-                        .requestMatchers("/api/v1/candidate/**").hasRole("CANDIDATE")
+                                // 2. Phân quyền hệ thống User (Chỉ Admin)
+                                .requestMatchers("/api/users/**").hasRole("ADMIN")
 
+                                // 3. Phân quyền Hệ thống quản lý Tin tuyển dụng (Job Posting)
+                                .requestMatchers("/api/jobs/search").hasAnyRole("ADMIN", "EMPLOYER")
+                                .requestMatchers("/api/jobs/createJob").hasRole("EMPLOYER")
+                                .requestMatchers("/api/jobs/*/submit-approval").hasRole("EMPLOYER")
+                                .requestMatchers("/api/jobs/*/close").hasRole("EMPLOYER")
+                                .requestMatchers("/api/jobs/*/approve").hasRole("ADMIN")
+                                .requestMatchers("/api/jobs/*/reject").hasRole("ADMIN")
                         // Mọi đường dẫn khác nằm ngoài danh sách trên đều có thể tự do truy cập công khai
                         .anyRequest().permitAll()
                 );

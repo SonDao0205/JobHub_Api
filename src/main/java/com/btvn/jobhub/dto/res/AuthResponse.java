@@ -8,4 +8,5 @@ import lombok.Data;
 public class AuthResponse {
     private String accessToken; // [cite: 261]
     private String refreshToken; // [cite: 261]
+    private String role;
 }

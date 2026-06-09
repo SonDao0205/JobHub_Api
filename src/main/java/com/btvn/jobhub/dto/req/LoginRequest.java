@@ -1,9 +1,13 @@
 package com.btvn.jobhub.dto.req;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
 public class LoginRequest {
-    private String username; // [cite: 261]
-    private String password; // [cite: 261]
+    @NotBlank(message = "Email không được để trống")
+    private String email;
+
+    @NotBlank(message = "Mật khẩu không được để trống")
+    private String password;
 }
