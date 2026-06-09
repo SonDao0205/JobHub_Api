@@ -1043,3 +1043,640 @@
 2026-06-09T14:00:46.127+07:00  WARN 7614 --- [JobHub] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Chỉ có thể phê duyệt các tin tuyển dụng đang chờ duyệt (PENDING_APPROVAL).]
 2026-06-09T14:00:54.956+07:00  WARN 7614 --- [JobHub] [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Không thể đóng một tin tuyển dụng đang nằm ở trạng thái nháp (DRAFT).]
 2026-06-09T14:01:34.679+07:00  WARN 7614 --- [JobHub] [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Nhà tuyển dụng chỉ được gửi duyệt khi tin ở trạng thái DRAFT. Trạng thái hiện tại: APPROVED]
+2026-06-09T14:16:16.972+07:00  WARN 7614 --- [JobHub] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m34s747ms).
+2026-06-09T14:35:00.537+07:00  INFO 7614 --- [JobHub] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-09T14:35:00.547+07:00  INFO 7614 --- [JobHub] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-09T14:35:00.553+07:00  INFO 7614 --- [JobHub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T14:35:00.559+07:00  INFO 7614 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-09T14:35:00.565+07:00  INFO 7614 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-09T20:02:55.727+07:00  INFO 12337 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Starting JobHubApplication using Java 17.0.9 with PID 12337 (/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main started by mac in /Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub)
+2026-06-09T20:02:55.729+07:00  INFO 12337 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T20:02:55.752+07:00  INFO 12337 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-09T20:02:55.752+07:00  INFO 12337 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-09T20:02:56.125+07:00  INFO 12337 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-09T20:02:56.158+07:00  INFO 12337 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 4 JPA repository interfaces.
+2026-06-09T20:02:56.456+07:00  INFO 12337 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-09T20:02:56.462+07:00  INFO 12337 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-09T20:02:56.463+07:00  INFO 12337 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-09T20:02:56.480+07:00  INFO 12337 --- [JobHub] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 728 ms
+2026-06-09T20:02:56.563+07:00  INFO 12337 --- [JobHub] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-09T20:02:56.601+07:00  INFO 12337 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-09T20:02:56.853+07:00  INFO 12337 --- [JobHub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-09T20:02:56.871+07:00  INFO 12337 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-09T20:02:57.114+07:00  INFO 12337 --- [JobHub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4a512c7a
+2026-06-09T20:02:57.115+07:00  INFO 12337 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-09T20:02:57.169+07:00  WARN 12337 --- [JobHub] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-09T20:02:57.180+07:00  INFO 12337 --- [JobHub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/JobHub?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.4
+	Default catalog/schema: JobHub/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-09T20:02:57.805+07:00  INFO 12337 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-09T20:02:57.875+07:00  INFO 12337 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T20:02:57.920+07:00  INFO 12337 --- [JobHub] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-09T20:02:58.091+07:00  INFO 12337 --- [JobHub] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-09T20:02:58.091+07:00  WARN 12337 --- [JobHub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-09T20:02:58.147+07:00  WARN 12337 --- [JobHub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-09T20:02:58.732+07:00  INFO 12337 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-09T20:02:58.737+07:00  INFO 12337 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Started JobHubApplication in 3.207 seconds (process running for 3.64)
+2026-06-09T20:52:23.627+07:00  WARN 12337 --- [JobHub] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=24m56s253ms).
+2026-06-09T20:57:23.034+07:00  INFO 12337 --- [JobHub] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-09T20:57:23.044+07:00  INFO 12337 --- [JobHub] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-09T20:57:23.050+07:00  INFO 12337 --- [JobHub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T20:57:23.055+07:00  INFO 12337 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-09T20:57:23.059+07:00  INFO 12337 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-09T20:57:25.965+07:00  INFO 13438 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Starting JobHubApplication using Java 17.0.9 with PID 13438 (/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main started by mac in /Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub)
+2026-06-09T20:57:25.968+07:00  INFO 13438 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T20:57:25.990+07:00  INFO 13438 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-09T20:57:25.991+07:00  INFO 13438 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-09T20:57:26.360+07:00  INFO 13438 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-09T20:57:26.394+07:00  INFO 13438 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 4 JPA repository interfaces.
+2026-06-09T20:57:26.746+07:00  INFO 13438 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-09T20:57:26.753+07:00  INFO 13438 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-09T20:57:26.756+07:00  INFO 13438 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-09T20:57:26.778+07:00  INFO 13438 --- [JobHub] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 787 ms
+2026-06-09T20:57:26.869+07:00  INFO 13438 --- [JobHub] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-09T20:57:26.908+07:00  INFO 13438 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-09T20:57:27.161+07:00  INFO 13438 --- [JobHub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-09T20:57:27.180+07:00  INFO 13438 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-09T20:57:27.402+07:00  INFO 13438 --- [JobHub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@38507b29
+2026-06-09T20:57:27.403+07:00  INFO 13438 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-09T20:57:27.454+07:00  WARN 13438 --- [JobHub] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-09T20:57:27.473+07:00  INFO 13438 --- [JobHub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/JobHub?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.4
+	Default catalog/schema: JobHub/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-09T20:57:28.152+07:00  INFO 13438 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-09T20:57:28.228+07:00  INFO 13438 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T20:57:28.280+07:00  INFO 13438 --- [JobHub] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-09T20:57:28.494+07:00  WARN 13438 --- [JobHub] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'applicationController' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/controller/ApplicationController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'applicationServiceImpl' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/ApplicationServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 3: Error creating bean with name 'cloudinaryService' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/CloudinaryService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'cloudinary' defined in class path resource [com/btvn/jobhub/security/config/CloudinaryConfig.class]: Failed to instantiate [com.cloudinary.Cloudinary]: Factory method 'cloudinary' threw exception with message: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+2026-06-09T20:57:28.494+07:00  INFO 13438 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T20:57:28.497+07:00  INFO 13438 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-09T20:57:28.500+07:00  INFO 13438 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-09T20:57:28.501+07:00  INFO 13438 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-06-09T20:57:28.507+07:00  INFO 13438 --- [JobHub] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-06-09T20:57:28.513+07:00 ERROR 13438 --- [JobHub] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'applicationController' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/controller/ApplicationController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'applicationServiceImpl' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/ApplicationServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 3: Error creating bean with name 'cloudinaryService' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/CloudinaryService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'cloudinary' defined in class path resource [com/btvn/jobhub/security/config/CloudinaryConfig.class]: Failed to instantiate [com.cloudinary.Cloudinary]: Factory method 'cloudinary' threw exception with message: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994) ~[spring-context-7.0.7.jar:7.0.7]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.7.jar:7.0.7]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.0.6.jar:4.0.6]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.0.6.jar:4.0.6]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.0.6.jar:4.0.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.0.6.jar:4.0.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.0.6.jar:4.0.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.0.6.jar:4.0.6]
+	at com.btvn.jobhub.JobHubApplication.main(JobHubApplication.java:10) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:52) ~[spring-boot-devtools-4.0.6.jar:4.0.6]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'applicationServiceImpl' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/ApplicationServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 3: Error creating bean with name 'cloudinaryService' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/CloudinaryService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'cloudinary' defined in class path resource [com/btvn/jobhub/security/config/CloudinaryConfig.class]: Failed to instantiate [com.cloudinary.Cloudinary]: Factory method 'cloudinary' threw exception with message: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.7.jar:7.0.7]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'cloudinaryService' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/CloudinaryService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'cloudinary' defined in class path resource [com/btvn/jobhub/security/config/CloudinaryConfig.class]: Failed to instantiate [com.cloudinary.Cloudinary]: Factory method 'cloudinary' threw exception with message: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:1225) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1704) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.7.jar:7.0.7]
+	... 40 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'cloudinary' defined in class path resource [com/btvn/jobhub/security/config/CloudinaryConfig.class]: Failed to instantiate [com.cloudinary.Cloudinary]: Factory method 'cloudinary' threw exception with message: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1362) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1194) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:1225) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1704) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.7.jar:7.0.7]
+	... 54 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.cloudinary.Cloudinary]: Factory method 'cloudinary' threw exception with message: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:183) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:72) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:152) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-7.0.7.jar:7.0.7]
+	... 68 common frames omitted
+Caused by: java.lang.UnknownError: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+	at com.cloudinary.Cloudinary.loadStrategies(Cloudinary.java:78) ~[cloudinary-core-2.4.0.jar:na]
+	at com.cloudinary.Cloudinary.<init>(Cloudinary.java:103) ~[cloudinary-core-2.4.0.jar:na]
+	at com.cloudinary.Cloudinary.<init>(Cloudinary.java:88) ~[cloudinary-core-2.4.0.jar:na]
+	at com.btvn.jobhub.security.config.CloudinaryConfig.cloudinary(CloudinaryConfig.java:23) ~[main/:na]
+	at com.btvn.jobhub.security.config.CloudinaryConfig$$SpringCGLIB$$0.CGLIB$cloudinary$0(<generated>) ~[main/:na]
+	at com.btvn.jobhub.security.config.CloudinaryConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[main/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-7.0.7.jar:7.0.7]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:398) ~[spring-context-7.0.7.jar:7.0.7]
+	at com.btvn.jobhub.security.config.CloudinaryConfig$$SpringCGLIB$$0.cloudinary(<generated>) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:155) ~[spring-beans-7.0.7.jar:7.0.7]
+	... 71 common frames omitted
+
+2026-06-09T20:59:24.263+07:00  INFO 13495 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Starting JobHubApplication using Java 17.0.9 with PID 13495 (/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main started by mac in /Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub)
+2026-06-09T20:59:24.265+07:00  INFO 13495 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T20:59:24.301+07:00  INFO 13495 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-09T20:59:24.301+07:00  INFO 13495 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-09T20:59:24.675+07:00  INFO 13495 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-09T20:59:24.707+07:00  INFO 13495 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 4 JPA repository interfaces.
+2026-06-09T20:59:25.010+07:00  INFO 13495 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-09T20:59:25.018+07:00  INFO 13495 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-09T20:59:25.018+07:00  INFO 13495 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-09T20:59:25.036+07:00  INFO 13495 --- [JobHub] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 734 ms
+2026-06-09T20:59:25.118+07:00  INFO 13495 --- [JobHub] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-09T20:59:25.156+07:00  INFO 13495 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-09T20:59:25.409+07:00  INFO 13495 --- [JobHub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-09T20:59:25.430+07:00  INFO 13495 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-09T20:59:25.584+07:00  INFO 13495 --- [JobHub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3fe42255
+2026-06-09T20:59:25.585+07:00  INFO 13495 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-09T20:59:25.622+07:00  WARN 13495 --- [JobHub] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-09T20:59:25.640+07:00  INFO 13495 --- [JobHub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/JobHub?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.4
+	Default catalog/schema: JobHub/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-09T20:59:26.258+07:00  INFO 13495 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-09T20:59:26.312+07:00  INFO 13495 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T20:59:26.362+07:00  INFO 13495 --- [JobHub] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-09T20:59:26.548+07:00  WARN 13495 --- [JobHub] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'applicationController' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/controller/ApplicationController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'applicationServiceImpl' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/ApplicationServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 3: Error creating bean with name 'cloudinaryService' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/CloudinaryService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'cloudinary' defined in class path resource [com/btvn/jobhub/security/config/CloudinaryConfig.class]: Failed to instantiate [com.cloudinary.Cloudinary]: Factory method 'cloudinary' threw exception with message: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+2026-06-09T20:59:26.548+07:00  INFO 13495 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T20:59:26.550+07:00  INFO 13495 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-09T20:59:26.553+07:00  INFO 13495 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-09T20:59:26.554+07:00  INFO 13495 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-06-09T20:59:26.558+07:00  INFO 13495 --- [JobHub] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-06-09T20:59:26.564+07:00 ERROR 13495 --- [JobHub] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'applicationController' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/controller/ApplicationController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'applicationServiceImpl' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/ApplicationServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 3: Error creating bean with name 'cloudinaryService' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/CloudinaryService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'cloudinary' defined in class path resource [com/btvn/jobhub/security/config/CloudinaryConfig.class]: Failed to instantiate [com.cloudinary.Cloudinary]: Factory method 'cloudinary' threw exception with message: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994) ~[spring-context-7.0.7.jar:7.0.7]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.7.jar:7.0.7]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.0.6.jar:4.0.6]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.0.6.jar:4.0.6]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.0.6.jar:4.0.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.0.6.jar:4.0.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.0.6.jar:4.0.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.0.6.jar:4.0.6]
+	at com.btvn.jobhub.JobHubApplication.main(JobHubApplication.java:10) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:52) ~[spring-boot-devtools-4.0.6.jar:4.0.6]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'applicationServiceImpl' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/ApplicationServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 3: Error creating bean with name 'cloudinaryService' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/CloudinaryService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'cloudinary' defined in class path resource [com/btvn/jobhub/security/config/CloudinaryConfig.class]: Failed to instantiate [com.cloudinary.Cloudinary]: Factory method 'cloudinary' threw exception with message: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.7.jar:7.0.7]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'cloudinaryService' defined in file [/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main/com/btvn/jobhub/service/impl/CloudinaryService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'cloudinary' defined in class path resource [com/btvn/jobhub/security/config/CloudinaryConfig.class]: Failed to instantiate [com.cloudinary.Cloudinary]: Factory method 'cloudinary' threw exception with message: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:1225) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1704) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.7.jar:7.0.7]
+	... 40 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'cloudinary' defined in class path resource [com/btvn/jobhub/security/config/CloudinaryConfig.class]: Failed to instantiate [com.cloudinary.Cloudinary]: Factory method 'cloudinary' threw exception with message: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1362) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1194) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:1225) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1704) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.7.jar:7.0.7]
+	... 54 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.cloudinary.Cloudinary]: Factory method 'cloudinary' threw exception with message: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:183) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:72) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:152) ~[spring-beans-7.0.7.jar:7.0.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-7.0.7.jar:7.0.7]
+	... 68 common frames omitted
+Caused by: java.lang.UnknownError: Can't find Cloudinary platform adapter [com.cloudinary.android.UploaderStrategy,com.cloudinary.http5.UploaderStrategy]
+	at com.cloudinary.Cloudinary.loadStrategies(Cloudinary.java:78) ~[cloudinary-core-2.4.0.jar:na]
+	at com.cloudinary.Cloudinary.<init>(Cloudinary.java:103) ~[cloudinary-core-2.4.0.jar:na]
+	at com.cloudinary.Cloudinary.<init>(Cloudinary.java:88) ~[cloudinary-core-2.4.0.jar:na]
+	at com.btvn.jobhub.security.config.CloudinaryConfig.cloudinary(CloudinaryConfig.java:23) ~[main/:na]
+	at com.btvn.jobhub.security.config.CloudinaryConfig$$SpringCGLIB$$0.CGLIB$cloudinary$0(<generated>) ~[main/:na]
+	at com.btvn.jobhub.security.config.CloudinaryConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[main/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-7.0.7.jar:7.0.7]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:398) ~[spring-context-7.0.7.jar:7.0.7]
+	at com.btvn.jobhub.security.config.CloudinaryConfig$$SpringCGLIB$$0.cloudinary(<generated>) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:155) ~[spring-beans-7.0.7.jar:7.0.7]
+	... 71 common frames omitted
+
+2026-06-09T21:05:01.534+07:00  INFO 13695 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Starting JobHubApplication using Java 17.0.9 with PID 13695 (/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main started by mac in /Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub)
+2026-06-09T21:05:01.536+07:00  INFO 13695 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T21:05:01.557+07:00  INFO 13695 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-09T21:05:01.558+07:00  INFO 13695 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-09T21:05:01.898+07:00  INFO 13695 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-09T21:05:01.927+07:00  INFO 13695 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 4 JPA repository interfaces.
+2026-06-09T21:05:02.232+07:00  INFO 13695 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-09T21:05:02.240+07:00  INFO 13695 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-09T21:05:02.241+07:00  INFO 13695 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-09T21:05:02.257+07:00  INFO 13695 --- [JobHub] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 699 ms
+2026-06-09T21:05:02.338+07:00  INFO 13695 --- [JobHub] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-09T21:05:02.377+07:00  INFO 13695 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-09T21:05:02.629+07:00  INFO 13695 --- [JobHub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-09T21:05:02.648+07:00  INFO 13695 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-09T21:05:02.810+07:00  INFO 13695 --- [JobHub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@561d4c68
+2026-06-09T21:05:02.810+07:00  INFO 13695 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-09T21:05:02.848+07:00  WARN 13695 --- [JobHub] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-09T21:05:02.869+07:00  INFO 13695 --- [JobHub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/JobHub?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.4
+	Default catalog/schema: JobHub/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-09T21:05:03.470+07:00  INFO 13695 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-09T21:05:03.532+07:00  INFO 13695 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T21:05:03.580+07:00  INFO 13695 --- [JobHub] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-09T21:05:03.819+07:00  INFO 13695 --- [JobHub] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-09T21:05:03.819+07:00  WARN 13695 --- [JobHub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-09T21:05:03.852+07:00  WARN 13695 --- [JobHub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-09T21:05:04.225+07:00  INFO 13695 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-09T21:05:04.229+07:00  INFO 13695 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Started JobHubApplication in 2.94 seconds (process running for 3.387)
+2026-06-09T21:05:07.355+07:00  INFO 13695 --- [JobHub] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-09T21:05:07.355+07:00  INFO 13695 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-09T21:05:07.356+07:00  INFO 13695 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-09T21:05:07.544+07:00  WARN 13695 --- [JobHub] [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content-Type 'application/octet-stream' is not supported]
+2026-06-09T21:05:46.078+07:00  WARN 13695 --- [JobHub] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException: Cannot invoke "com.btvn.jobhub.security.principal.UserPrincipal.getId()" because "userPrincipal" is null]
+2026-06-09T21:06:02.318+07:00  WARN 13695 --- [JobHub] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Invalid cloud_name JobHub]
+2026-06-09T21:14:49.139+07:00  INFO 13695 --- [JobHub] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-09T21:14:49.167+07:00  INFO 13695 --- [JobHub] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-09T21:14:49.173+07:00  INFO 13695 --- [JobHub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T21:14:49.177+07:00  INFO 13695 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-09T21:14:49.180+07:00  INFO 13695 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-09T21:14:51.026+07:00  INFO 13862 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Starting JobHubApplication using Java 17.0.9 with PID 13862 (/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main started by mac in /Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub)
+2026-06-09T21:14:51.028+07:00  INFO 13862 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T21:14:51.063+07:00  INFO 13862 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-09T21:14:51.063+07:00  INFO 13862 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-09T21:14:51.522+07:00  INFO 13862 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-09T21:14:51.561+07:00  INFO 13862 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 4 JPA repository interfaces.
+2026-06-09T21:14:51.997+07:00  INFO 13862 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-09T21:14:52.003+07:00  INFO 13862 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-09T21:14:52.003+07:00  INFO 13862 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-09T21:14:52.022+07:00  INFO 13862 --- [JobHub] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 959 ms
+2026-06-09T21:14:52.100+07:00  INFO 13862 --- [JobHub] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-09T21:14:52.132+07:00  INFO 13862 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-09T21:14:52.378+07:00  INFO 13862 --- [JobHub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-09T21:14:52.396+07:00  INFO 13862 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-09T21:14:52.578+07:00  INFO 13862 --- [JobHub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18239915
+2026-06-09T21:14:52.578+07:00  INFO 13862 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-09T21:14:52.617+07:00  WARN 13862 --- [JobHub] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-09T21:14:52.633+07:00  INFO 13862 --- [JobHub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/JobHub?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.4
+	Default catalog/schema: JobHub/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-09T21:14:53.287+07:00  INFO 13862 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-09T21:14:53.347+07:00  INFO 13862 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T21:14:53.396+07:00  INFO 13862 --- [JobHub] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-09T21:14:53.625+07:00  INFO 13862 --- [JobHub] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-09T21:14:53.625+07:00  WARN 13862 --- [JobHub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-09T21:14:53.680+07:00  WARN 13862 --- [JobHub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-09T21:14:54.063+07:00  INFO 13862 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-09T21:14:54.067+07:00  INFO 13862 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Started JobHubApplication in 3.253 seconds (process running for 3.621)
+2026-06-09T21:14:57.888+07:00  INFO 13862 --- [JobHub] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-09T21:14:57.888+07:00  INFO 13862 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-09T21:14:57.890+07:00  INFO 13862 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-06-09T21:15:01.599+07:00  WARN 13862 --- [JobHub] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: [prodenv:e7c293a1cf31c2f36d08c09608c568] Request forbidden due to missing permissions (actions=["create"])]
+2026-06-09T21:17:12.872+07:00  WARN 13862 --- [JobHub] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: [prodenv:e7c293a1cf31c2f36d08c09608c568] Request forbidden due to missing permissions (actions=["create"])]
+2026-06-09T21:20:12.838+07:00  WARN 13862 --- [JobHub] [http-nio-8080-exec-9] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-06-09T21:23:12.807+07:00  WARN 13862 --- [JobHub] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Bạn đã nộp hồ sơ ứng tuyển cho công việc này rồi.]
+2026-06-09T21:32:28.905+07:00  INFO 13862 --- [JobHub] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-09T21:32:28.910+07:00  INFO 13862 --- [JobHub] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-09T21:32:28.913+07:00  INFO 13862 --- [JobHub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T21:32:28.916+07:00  INFO 13862 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-09T21:32:28.919+07:00  INFO 13862 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-09T21:32:31.754+07:00  INFO 14127 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Starting JobHubApplication using Java 17.0.9 with PID 14127 (/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main started by mac in /Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub)
+2026-06-09T21:32:31.756+07:00  INFO 14127 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T21:32:31.789+07:00  INFO 14127 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-09T21:32:31.789+07:00  INFO 14127 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-09T21:32:32.133+07:00  INFO 14127 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-09T21:32:32.163+07:00  INFO 14127 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 4 JPA repository interfaces.
+2026-06-09T21:32:32.488+07:00  INFO 14127 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-09T21:32:32.498+07:00  INFO 14127 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-09T21:32:32.499+07:00  INFO 14127 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-09T21:32:32.518+07:00  INFO 14127 --- [JobHub] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 728 ms
+2026-06-09T21:32:32.613+07:00  INFO 14127 --- [JobHub] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-09T21:32:32.651+07:00  INFO 14127 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-09T21:32:32.906+07:00  INFO 14127 --- [JobHub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-09T21:32:32.927+07:00  INFO 14127 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-09T21:32:33.103+07:00  INFO 14127 --- [JobHub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@298097f3
+2026-06-09T21:32:33.104+07:00  INFO 14127 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-09T21:32:33.144+07:00  WARN 14127 --- [JobHub] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-09T21:32:33.153+07:00  INFO 14127 --- [JobHub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/JobHub?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.4
+	Default catalog/schema: JobHub/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-09T21:32:33.775+07:00  INFO 14127 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-09T21:32:33.831+07:00  INFO 14127 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T21:32:33.881+07:00  INFO 14127 --- [JobHub] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-09T21:32:34.114+07:00  INFO 14127 --- [JobHub] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-09T21:32:34.115+07:00  WARN 14127 --- [JobHub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-09T21:32:34.148+07:00  WARN 14127 --- [JobHub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-09T21:32:34.517+07:00  INFO 14127 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-09T21:32:34.520+07:00  INFO 14127 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Started JobHubApplication in 2.982 seconds (process running for 3.356)
+2026-06-09T21:32:38.971+07:00  INFO 14127 --- [JobHub] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-09T21:32:38.972+07:00  INFO 14127 --- [JobHub] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-09T21:32:38.973+07:00  INFO 14127 --- [JobHub] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-09T21:33:31.295+07:00  WARN 14127 --- [JobHub] [http-nio-8080-exec-7] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-06-09T21:34:03.807+07:00  INFO 14127 --- [JobHub] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-09T21:34:03.812+07:00  INFO 14127 --- [JobHub] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-09T21:34:03.817+07:00  INFO 14127 --- [JobHub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T21:34:03.819+07:00  INFO 14127 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-09T21:34:03.822+07:00  INFO 14127 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-09T21:34:05.961+07:00  INFO 14151 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Starting JobHubApplication using Java 17.0.9 with PID 14151 (/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main started by mac in /Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub)
+2026-06-09T21:34:05.963+07:00  INFO 14151 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T21:34:05.987+07:00  INFO 14151 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-09T21:34:05.987+07:00  INFO 14151 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-09T21:34:06.332+07:00  INFO 14151 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-09T21:34:06.360+07:00  INFO 14151 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 4 JPA repository interfaces.
+2026-06-09T21:34:06.663+07:00  INFO 14151 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-09T21:34:06.670+07:00  INFO 14151 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-09T21:34:06.670+07:00  INFO 14151 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-09T21:34:06.689+07:00  INFO 14151 --- [JobHub] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 702 ms
+2026-06-09T21:34:06.763+07:00  INFO 14151 --- [JobHub] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-09T21:34:06.793+07:00  INFO 14151 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-09T21:34:07.021+07:00  INFO 14151 --- [JobHub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-09T21:34:07.038+07:00  INFO 14151 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-09T21:34:07.198+07:00  INFO 14151 --- [JobHub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58072ace
+2026-06-09T21:34:07.199+07:00  INFO 14151 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-09T21:34:07.233+07:00  WARN 14151 --- [JobHub] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-09T21:34:07.249+07:00  INFO 14151 --- [JobHub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/JobHub?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.4
+	Default catalog/schema: JobHub/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-09T21:34:07.822+07:00  INFO 14151 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-09T21:34:07.872+07:00  INFO 14151 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T21:34:07.919+07:00  INFO 14151 --- [JobHub] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-09T21:34:08.138+07:00  INFO 14151 --- [JobHub] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-09T21:34:08.138+07:00  WARN 14151 --- [JobHub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-09T21:34:08.171+07:00  WARN 14151 --- [JobHub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-09T21:34:08.537+07:00  INFO 14151 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-09T21:34:08.541+07:00  INFO 14151 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Started JobHubApplication in 2.768 seconds (process running for 3.149)
+2026-06-09T21:34:12.199+07:00  INFO 14151 --- [JobHub] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-09T21:34:12.199+07:00  INFO 14151 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-09T21:34:12.200+07:00  INFO 14151 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-09T21:34:12.593+07:00  WARN 14151 --- [JobHub] [http-nio-8080-exec-1] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-06-09T21:46:10.768+07:00  WARN 14151 --- [JobHub] [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Bạn đã nộp hồ sơ ứng tuyển cho công việc này rồi.]
+2026-06-09T22:05:16.512+07:00  INFO 14151 --- [JobHub] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-09T22:05:16.524+07:00  INFO 14151 --- [JobHub] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-09T22:05:16.529+07:00  INFO 14151 --- [JobHub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T22:05:16.535+07:00  INFO 14151 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-09T22:05:16.540+07:00  INFO 14151 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-09T22:05:19.478+07:00  INFO 14950 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Starting JobHubApplication using Java 17.0.9 with PID 14950 (/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main started by mac in /Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub)
+2026-06-09T22:05:19.480+07:00  INFO 14950 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T22:05:19.504+07:00  INFO 14950 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-09T22:05:19.504+07:00  INFO 14950 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-09T22:05:19.951+07:00  INFO 14950 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-09T22:05:20.275+07:00  INFO 14950 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 320 ms. Found 4 JPA repository interfaces.
+2026-06-09T22:05:20.594+07:00  INFO 14950 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-09T22:05:20.601+07:00  INFO 14950 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-09T22:05:20.601+07:00  INFO 14950 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-09T22:05:20.619+07:00  INFO 14950 --- [JobHub] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1115 ms
+2026-06-09T22:05:20.700+07:00  INFO 14950 --- [JobHub] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-09T22:05:20.742+07:00  INFO 14950 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-09T22:05:21.001+07:00  INFO 14950 --- [JobHub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-09T22:05:21.019+07:00  INFO 14950 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-09T22:05:21.195+07:00  INFO 14950 --- [JobHub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@36b671d7
+2026-06-09T22:05:21.196+07:00  INFO 14950 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-09T22:05:21.254+07:00  WARN 14950 --- [JobHub] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-09T22:05:21.268+07:00  INFO 14950 --- [JobHub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/JobHub?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.4
+	Default catalog/schema: JobHub/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-09T22:05:21.894+07:00  INFO 14950 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-09T22:05:22.053+07:00  INFO 14950 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T22:05:22.108+07:00  INFO 14950 --- [JobHub] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-09T22:05:22.348+07:00  INFO 14950 --- [JobHub] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-09T22:05:22.349+07:00  WARN 14950 --- [JobHub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-09T22:05:22.382+07:00  WARN 14950 --- [JobHub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-09T22:05:22.761+07:00  INFO 14950 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-09T22:05:22.765+07:00  INFO 14950 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Started JobHubApplication in 3.517 seconds (process running for 3.932)
+2026-06-09T22:09:53.922+07:00  INFO 14950 --- [JobHub] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-09T22:09:53.924+07:00  INFO 14950 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-09T22:09:53.927+07:00  INFO 14950 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-06-09T22:09:57.174+07:00  WARN 14950 --- [JobHub] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Bạn đã nộp hồ sơ ứng tuyển cho công việc này rồi.]
+2026-06-09T22:16:11.197+07:00  WARN 14950 --- [JobHub] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Mật khẩu hiện tại không chính xác.]
+2026-06-09T22:17:08.002+07:00  WARN 14950 --- [JobHub] [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2026-06-09T22:17:20.519+07:00  WARN 14950 --- [JobHub] [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.btvn.jobhub.dto.res.ApiResponse<java.lang.Void>> com.btvn.jobhub.controller.AuthController.forgotPassword(com.btvn.jobhub.dto.req.ForgotPasswordRequest): [Field error in object 'forgotPasswordRequest' on field 'email': rejected value [candidate4]; codes [Email.forgotPasswordRequest.email,Email.email,Email.java.lang.String,Email]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [forgotPasswordRequest.email,email]; arguments []; default message [email],[Ljakarta.validation.constraints.Pattern$Flag;@264b76da,.*]; default message [Định dạng email không hợp lệ]] ]
+2026-06-09T22:17:28.158+07:00  WARN 14950 --- [JobHub] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Không tìm thấy tài khoản nào liên kết với Email này.]
+2026-06-09T22:18:33.504+07:00  WARN 14950 --- [JobHub] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Mã xác thực (Token) không hợp lệ hoặc không tồn tại.]
+2026-06-09T22:18:44.294+07:00  WARN 14950 --- [JobHub] [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.security.authentication.BadCredentialsException: Tài khoản hoặc mật khẩu không chính xác.]
+2026-06-09T22:18:52.100+07:00  WARN 14950 --- [JobHub] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.RuntimeException: Mã xác thực (Token) không hợp lệ hoặc không tồn tại.]
+2026-06-09T22:23:04.813+07:00  INFO 14950 --- [JobHub] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-09T22:23:04.820+07:00  INFO 14950 --- [JobHub] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-09T22:23:04.825+07:00  INFO 14950 --- [JobHub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T22:23:04.832+07:00  INFO 14950 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-09T22:23:04.836+07:00  INFO 14950 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-09T22:23:07.585+07:00  INFO 15352 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Starting JobHubApplication using Java 17.0.9 with PID 15352 (/Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub/build/classes/java/main started by mac in /Users/mac/Documents/Study/Rikkei/Ki 3/Session_05_Java_WebService/JobHub)
+2026-06-09T22:23:07.586+07:00  INFO 15352 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T22:23:07.613+07:00  INFO 15352 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-09T22:23:07.613+07:00  INFO 15352 --- [JobHub] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-09T22:23:08.001+07:00  INFO 15352 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-09T22:23:08.052+07:00  INFO 15352 --- [JobHub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 4 JPA repository interfaces.
+2026-06-09T22:23:08.413+07:00  INFO 15352 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-09T22:23:08.420+07:00  INFO 15352 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-09T22:23:08.420+07:00  INFO 15352 --- [JobHub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-09T22:23:08.439+07:00  INFO 15352 --- [JobHub] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 826 ms
+2026-06-09T22:23:08.530+07:00  INFO 15352 --- [JobHub] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-09T22:23:08.567+07:00  INFO 15352 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-09T22:23:08.844+07:00  INFO 15352 --- [JobHub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-09T22:23:08.863+07:00  INFO 15352 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-09T22:23:09.074+07:00  INFO 15352 --- [JobHub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@19fd11b9
+2026-06-09T22:23:09.075+07:00  INFO 15352 --- [JobHub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-09T22:23:09.115+07:00  WARN 15352 --- [JobHub] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-09T22:23:09.126+07:00  INFO 15352 --- [JobHub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/JobHub?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.4
+	Default catalog/schema: JobHub/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-09T22:23:09.786+07:00  INFO 15352 --- [JobHub] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-09T22:23:09.856+07:00  INFO 15352 --- [JobHub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T22:23:09.907+07:00  INFO 15352 --- [JobHub] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-09T22:23:10.164+07:00  INFO 15352 --- [JobHub] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-09T22:23:10.165+07:00  WARN 15352 --- [JobHub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-09T22:23:10.209+07:00  WARN 15352 --- [JobHub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-09T22:23:10.640+07:00  INFO 15352 --- [JobHub] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-09T22:23:10.644+07:00  INFO 15352 --- [JobHub] [restartedMain] com.btvn.jobhub.JobHubApplication        : Started JobHubApplication in 3.342 seconds (process running for 3.768)
+2026-06-09T22:23:17.136+07:00  INFO 15352 --- [JobHub] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-09T22:23:17.136+07:00  INFO 15352 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-09T22:23:17.138+07:00  INFO 15352 --- [JobHub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-06-09T22:23:17.239+07:00  INFO 15352 --- [JobHub] [http-nio-8080-exec-1] c.b.jobhub.aspect.SystemLoggingAspect    : [SYSTEM LOG] - Thời gian: 2026-06-09 22:23:17 | Người thực hiện: ANONYMOUS (Khách vãng lai) | Kích hoạt: AuthController.authenticateUser()
+2026-06-09T22:23:17.239+07:00  INFO 15352 --- [JobHub] [http-nio-8080-exec-1] c.b.jobhub.aspect.SystemLoggingAspect    : [SYSTEM LOG] - Thời gian: 2026-06-09 22:23:17 | Người thực hiện: ANONYMOUS (Khách vãng lai) | Kích hoạt: AuthServiceImpl.login()
+2026-06-09T22:23:27.496+07:00  INFO 15352 --- [JobHub] [http-nio-8080-exec-3] c.b.jobhub.aspect.SystemLoggingAspect    : [SYSTEM LOG] - Thời gian: 2026-06-09 22:23:27 | Người thực hiện: candidate2@gmail.com | Kích hoạt: JobPostingController.getApprovedJobs()
+2026-06-09T22:23:27.502+07:00  INFO 15352 --- [JobHub] [http-nio-8080-exec-3] c.b.jobhub.aspect.SystemLoggingAspect    : [SYSTEM LOG] - Thời gian: 2026-06-09 22:23:27 | Người thực hiện: candidate2@gmail.com | Kích hoạt: JobPostingServiceImpl.getAllJobs()
+2026-06-09T22:23:27.537+07:00  WARN 15352 --- [JobHub] [http-nio-8080-exec-3] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+

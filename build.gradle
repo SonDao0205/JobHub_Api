@@ -46,6 +46,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-aop:4.0.0-M2")
     // Source: https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
     testImplementation("org.mockito:mockito-junit-jupiter:5.23.0")
+    implementation 'com.cloudinary:cloudinary-http5:2.4.0'
+    // Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop
+    implementation("org.springframework.boot:spring-boot-starter-aop:4.0.0-M2")
+
 }
 
 tasks.named('test') {

@@ -2,6 +2,8 @@ package com.btvn.jobhub.entity;
 import com.btvn.jobhub.entity.enumType.RoleEnum;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -27,4 +29,7 @@ public class User {
 
     @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL)
     private List<Application> applications; // [cite: 144]
+
+    private String resetToken;
+    private LocalDateTime resetTokenExpiry;
 }

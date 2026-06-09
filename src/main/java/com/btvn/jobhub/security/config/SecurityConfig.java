@@ -5,6 +5,7 @@ import com.btvn.jobhub.security.principal.UserPrincipalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -23,6 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableMethodSecurity
 @RequiredArgsConstructor
+@EnableAspectJAutoProxy
 public class SecurityConfig {
 
     private final UserPrincipalService userPrincipalService;
@@ -59,7 +61,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Cấp quyền Public cho các cổng Auth hệ thống công cộng
                                 // 1. Cổng mở hoàn toàn tự do (Public)
-                                .requestMatchers("/api/auth/**").permitAll()
+                                .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/refresh", "/api/auth/forgot-password", "/api/auth/reset-password").permitAll()
+                                .requestMatchers("/api/auth/change-password").authenticated()
 
                                 // 2. Phân quyền hệ thống User (Chỉ Admin)
                                 .requestMatchers("/api/users/**").hasRole("ADMIN")
@@ -71,6 +74,14 @@ public class SecurityConfig {
                                 .requestMatchers("/api/jobs/*/close").hasRole("EMPLOYER")
                                 .requestMatchers("/api/jobs/*/approve").hasRole("ADMIN")
                                 .requestMatchers("/api/jobs/*/reject").hasRole("ADMIN")
+                                .requestMatchers("/api/jobs/jobApproved").hasAnyRole("CANDIDATE","EMPLOYER","ADMIN")
+                                // 4. Phân quyền Hệ thống Đơn ứng tuyển (Application)
+                                .requestMatchers("/api/applications/apply").hasRole("CANDIDATE")
+                                .requestMatchers("/api/applications/history").hasRole("CANDIDATE")
+                                .requestMatchers("/api/applications/*/review").hasRole("EMPLOYER")
+                                .requestMatchers("/api/applications/*/interview").hasRole("EMPLOYER")
+                                .requestMatchers("/api/applications/*/accept").hasRole("EMPLOYER")
+                                .requestMatchers("/api/applications/*/reject").hasRole("EMPLOYER")
                         // Mọi đường dẫn khác nằm ngoài danh sách trên đều có thể tự do truy cập công khai
                         .anyRequest().permitAll()
                 );

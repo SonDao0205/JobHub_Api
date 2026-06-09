@@ -70,6 +70,29 @@ public class JobPostingController {
         );
     }
 
+    // FR-07 / UC-07: Ứng viên (Candidate) xem danh sách việc làm đã được phê duyệt công khai
+    @GetMapping("/jobApproved")
+    public ResponseEntity<ApiResponse<Page<JobPostingResponse>>> getApprovedJobs(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "id") String sortBy) {
+
+        // 1. Khởi tạo cấu hình phân trang (Spring Data Page tính từ 0 nên lấy page - 1)
+        Pageable pageable = PageRequest.of(page - 1, size, Sort.by(sortBy).descending());
+
+        // 2. Tái sử dụng hàm getAllJobs từ Service, truyền cứng trạng thái JobStatusEnum.APPROVED
+        Page<JobPostingResponse> jobPage = jobPostingService.getAllJobs(JobStatusEnum.APPROVED, pageable);
+
+        // 3. Trả về cấu trúc JSON chuẩn hệ thống
+        return ResponseEntity.ok(
+                ApiResponse.<Page<JobPostingResponse>>builder()
+                        .success(true)
+                        .message("Lấy danh sách việc làm đang tuyển dụng thành công.")
+                        .data(jobPage)
+                        .build()
+        );
+    }
+
     // Nhà tuyển dụng gửi yêu cầu duyệt tin (Chuyển trạng thái từ DRAFT sang PENDING_APPROVAL)
     @PutMapping("/{id}/submit-approval")
     public ResponseEntity<ApiResponse<JobPostingResponse>> submitJobForApproval(
@@ -105,11 +128,6 @@ public class JobPostingController {
                         .build()
         );
     }
-
-
-    // =========================================================================
-    // KHU VỰC CỦA QUẢN TRỊ VIÊN (ADMIN) - Chỉ cho phép người dùng có Role ADMIN
-    // =========================================================================
 
     // Admin phê duyệt tin tuyển dụng (Chuyển trạng thái sang APPROVED)
     @PutMapping("/{id}/approve")

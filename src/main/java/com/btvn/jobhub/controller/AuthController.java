@@ -1,16 +1,16 @@
 package com.btvn.jobhub.controller;
 
-import com.btvn.jobhub.dto.req.LoginRequest;
-import com.btvn.jobhub.dto.req.RefreshTokenRequest;
-import com.btvn.jobhub.dto.req.RegisterUserRequest;
+import com.btvn.jobhub.dto.req.*;
 import com.btvn.jobhub.dto.res.ApiResponse;
 import com.btvn.jobhub.dto.res.AuthResponse;
 import com.btvn.jobhub.dto.res.UserResponse;
+import com.btvn.jobhub.security.principal.UserPrincipal;
 import com.btvn.jobhub.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,6 +73,44 @@ public class AuthController {
                 ApiResponse.<Void>builder()
                         .success(true)
                         .message("Đăng xuất thành công, Token đã được đưa vào danh sách đen.")
+                        .build()
+        );
+    }
+
+    @PostMapping("/change-password")
+    public ResponseEntity<ApiResponse<Void>> changePassword(
+            @Valid @RequestBody ChangePasswordRequest request,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+
+        authService.changePassword(request, userPrincipal.getId());
+        return ResponseEntity.ok(
+                ApiResponse.<Void>builder()
+                        .success(true)
+                        .message("Thay đổi mật khẩu thành công.")
+                        .build()
+        );
+    }
+
+    // Quên mật khẩu Bước 1: Gửi yêu cầu sinh mã Token xác thực
+    @PostMapping("/forgot-password")
+    public ResponseEntity<ApiResponse<Void>> forgotPassword(@Valid @RequestBody ForgotPasswordRequest request) {
+        authService.processForgotPassword(request);
+        return ResponseEntity.ok(
+                ApiResponse.<Void>builder()
+                        .success(true)
+                        .message("Mã khôi phục đã được khởi tạo. Vui lòng kiểm tra Console Log hệ thống.")
+                        .build()
+        );
+    }
+
+    // Quên mật khẩu Bước 2: Truyền mã Token kèm mật khẩu mới để reset
+    @PostMapping("/reset-password")
+    public ResponseEntity<ApiResponse<Void>> resetPassword(@Valid @RequestBody ResetPasswordRequest request) {
+        authService.resetPassword(request);
+        return ResponseEntity.ok(
+                ApiResponse.<Void>builder()
+                        .success(true)
+                        .message("Đặt lại mật khẩu mới thành công! Bạn có thể dùng mật khẩu này để đăng nhập.")
                         .build()
         );
     }

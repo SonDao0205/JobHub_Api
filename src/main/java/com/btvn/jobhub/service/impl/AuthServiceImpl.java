@@ -1,7 +1,6 @@
 package com.btvn.jobhub.service.impl;
 
-import com.btvn.jobhub.dto.req.LoginRequest;
-import com.btvn.jobhub.dto.req.RegisterUserRequest;
+import com.btvn.jobhub.dto.req.*;
 import com.btvn.jobhub.dto.res.AuthResponse;
 import com.btvn.jobhub.dto.res.UserResponse;
 import com.btvn.jobhub.entity.TokenBlacklist;
@@ -24,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -134,5 +134,71 @@ public class AuthServiceImpl implements AuthService {
             tokenBlacklistRepository.save(blacklistEntry);
             SecurityContextHolder.clearContext();
         }
+    }
+
+    // 1. Logic Đổi mật khẩu chủ động (Yêu cầu đã đăng nhập)
+    @Override
+    @Transactional
+    public void changePassword(ChangePasswordRequest request, Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng."));
+
+        // Fail-Fast: Kiểm tra xem mật khẩu cũ truyền lên có khớp với Password đang lưu trong DB không
+        if (!passwordEncoder.matches(request.getOldPassword(), user.getPasswordHash())) {
+            throw new RuntimeException("Mật khẩu hiện tại không chính xác.");
+        }
+
+        // Fail-Fast: Tránh việc đổi mật khẩu mới trùng lặp khít với mật khẩu cũ
+        if (passwordEncoder.matches(request.getNewPassword(), user.getPasswordHash())) {
+            throw new RuntimeException("Mật khẩu mới không được trùng với mật khẩu cũ.");
+        }
+
+        // Tiến hành băm mã hóa mật khẩu mới và cập nhật
+        user.setPasswordHash(passwordEncoder.encode(request.getNewPassword()));
+        userRepository.save(user);
+    }
+
+    // 2. Logic Quên mật khẩu - Bước 1: Tạo mã Token khôi phục
+    @Override
+    @Transactional
+    public void processForgotPassword(ForgotPasswordRequest request) {
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy tài khoản nào liên kết với Email này."));
+
+        // Khởi tạo chuỗi Token ngẫu nhiên bảo mật cao và đặt thời gian hết hạn là 15 phút
+        String token = UUID.randomUUID().toString();
+        user.setResetToken(token);
+        user.setResetTokenExpiry(LocalDateTime.now().plusMinutes(15));
+        userRepository.save(user);
+
+        // 💡 Giả lập gửi Mail: In ra màn hình Console Log để bạn lấy Token đem đi test Postman bước tiếp theo
+        System.out.println("========================================================================");
+        System.out.println("HỆ THỐNG GỬI MÃ KHÔI PHỤC MẬT KHẨU ĐẾN: " + user.getEmail());
+        System.out.println("TOKEN KHÔI PHỤC (HẠN 15 PHÚT): " + token);
+        System.out.println("========================================================================");
+    }
+
+    // 3. Logic Quên mật khẩu - Bước 2: Kiểm tra Token hợp lệ và Đặt lại mật khẩu
+    @Override
+    @Transactional
+    public void resetPassword(ResetPasswordRequest request) {
+        // Tìm user dựa trên Token được gửi lên từ Client
+        User user = userRepository.findAll().stream()
+                .filter(u -> request.getToken().equals(u.getResetToken()))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Mã xác thực (Token) không hợp lệ hoặc không tồn tại."));
+
+        // Fail-Fast: Kiểm tra xem mã Token đã quá hạn 15 phút chưa
+        if (user.getResetTokenExpiry() == null || user.getResetTokenExpiry().isBefore(LocalDateTime.now())) {
+            throw new RuntimeException("Mã xác thực (Token) đã hết hiệu lực. Vui lòng yêu cầu lại.");
+        }
+
+        // Cập nhật mật khẩu mới dứt điểm
+        user.setPasswordHash(passwordEncoder.encode(request.getNewPassword()));
+
+        // Xóa sạch dấu vết Token cũ sau khi khôi phục thành công để tăng tính bảo mật
+        user.setResetToken(null);
+        user.setResetTokenExpiry(null);
+        userRepository.save(user);
     }
 }
