@@ -5,5 +5,5 @@ import lombok.Data;
 
 @Data
 public class UpdateApplicationStatusRequest {
-    private ApplicationStatusEnum newStatus; // [cite: 214]
+    private ApplicationStatusEnum newStatus;
 }

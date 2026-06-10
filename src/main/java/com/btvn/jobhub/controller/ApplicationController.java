@@ -26,7 +26,7 @@ public class ApplicationController {
 
     private final ApplicationService applicationService;
 
-    // UC-07: Ứng viên nộp đơn kèm file CV truyền lên Cloudinary
+
     @PostMapping(value = "/apply", consumes = MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ApiResponse<ApplicationResponse>> applyJob(
             @Valid @RequestPart("request") ApplicationRequest request,
@@ -41,7 +41,7 @@ public class ApplicationController {
         );
     }
 
-    // 💡 SỬA LẠI HÀM LẤY LỊCH SỬ CHUẨN ĐỦ THAM SỐ:
+
     @GetMapping("/history")
     public ResponseEntity<ApiResponse<Page<ApplicationResponse>>> getHistory(
             @RequestParam(defaultValue = "1") int page,
@@ -61,9 +61,9 @@ public class ApplicationController {
         );
     }
 
-    // =========================================================================
-    // KHU VỰC XỬ LÝ HỒ SƠ ỨNG TUYỂN CỦA NHÀ TUYỂN DỤNG (EMPLOYER)
-    // =========================================================================
+
+
+
 
     @PutMapping("/{id}/review")
     public ResponseEntity<ApiResponse<ApplicationResponse>> reviewApp(

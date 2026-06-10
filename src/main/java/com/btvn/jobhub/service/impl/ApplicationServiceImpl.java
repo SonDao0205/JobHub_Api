@@ -38,17 +38,14 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     @Transactional
     public ApplicationResponse applyForJob(Long jobPostingId, String coverLetter, MultipartFile cvFile, Long candidateId) {
-        // 1. Fail-Fast: Chặn ngay nếu file rỗng -> 400 Bad Request
         if (cvFile == null || cvFile.isEmpty()) {
             throw new BadRequestException("Vui lòng tải lên file hồ sơ CV của bạn.");
         }
 
-        // 2. Chống spam CV -> 409 Conflict
         if (applicationRepository.existsByCandidateIdAndJobPostingId(candidateId, jobPostingId)) {
             throw new ResourceConflictException("Bạn đã nộp hồ sơ ứng tuyển cho công việc này rồi.");
         }
 
-        // 3. Kiểm tra bài đăng có tồn tại không -> 400 Bad Request
         JobPosting jobPosting = jobPostingRepository.findById(jobPostingId)
                 .orElseThrow(() -> new BadRequestException("Không tìm thấy tin tuyển dụng có ID: " + jobPostingId));
 
@@ -59,10 +56,8 @@ public class ApplicationServiceImpl implements ApplicationService {
         User candidate = userRepository.findById(candidateId)
                 .orElseThrow(() -> new BadRequestException("Không tìm thấy thông tin ứng viên."));
 
-        // 4. ĐẨY FILE LÊN CLOUDINARY
         String generatedCvUrl = cloudinaryService.uploadFile(cvFile);
 
-        // 5. Khởi tạo và Lưu trữ (Controller cần return về 201 Created cho API này)
         Application application = Application.builder()
                 .coverLetter(coverLetter)
                 .cvUrl(generatedCvUrl)
@@ -120,19 +115,14 @@ public class ApplicationServiceImpl implements ApplicationService {
         return new PageImpl<>(dtoList, pageable, appPage.getTotalElements());
     }
 
-    /**
-     * Helper chứng thực bảo mật chéo dữ liệu
-     */
     private Application getValidatedApplication(Long applicationId, Long employerId) {
         Application app = applicationRepository.findById(applicationId)
                 .orElseThrow(() -> new BadRequestException("Không tìm thấy hồ sơ ứng tuyển có ID: " + applicationId));
 
-        // Kiểm tra bảo mật chéo -> Nếu không thuộc sở hữu thì ném lỗi 403 Forbidden
         Long actualEmployerId = app.getJobPosting().getEmployer().getId();
         if (!actualEmployerId.equals(employerId)) {
             throw new ForbiddenException("Bạn không có quyền xử lý hồ sơ ứng tuyển thuộc tin tuyển dụng của công ty khác.");
         }
-
         return app;
     }
 

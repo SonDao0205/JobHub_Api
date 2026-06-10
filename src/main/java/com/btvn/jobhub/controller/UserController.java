@@ -30,13 +30,10 @@ public class UserController {
             @RequestParam(defaultValue = "5") int size,
             @RequestParam(defaultValue = "id") String sortBy) {
 
-        // 1. Khởi tạo đối tượng Pageable (mặc định sắp xếp giảm dần theo trường được truyền vào)
         Pageable pageable = PageRequest.of(page - 1, size, Sort.by(sortBy).descending());
 
-        // 2. Gọi sang Service để lấy dữ liệu đã được xử lý bằng Stream API
         Page<UserResponse> userPage = userService.getAllUsers(pageable);
 
-        // 3. Trả về cấu hình dữ liệu chuẩn JSON DTO theo định dạng hệ thống
         return ResponseEntity.ok(
                 ApiResponse.<Page<UserResponse>>builder()
                         .success(true)
@@ -58,16 +55,13 @@ public class UserController {
         );
     }
 
-    // FR-05 / UC-02: Kích hoạt / Vô hiệu hóa trạng thái người dùng (Toggle Status) [cite: 34, 262, 264]
     @PutMapping("/{id}/status")
     public ResponseEntity<ApiResponse<Void>> toggleUserStatus(
             @PathVariable Long id,
             @Valid @RequestBody UpdateUserStatusRequest request) {
 
-        // Gọi xuống Service xử lý thay đổi trạng thái trong CSDL
         userService.toggleUserStatus(id, request.getIsActive());
 
-        // Trả về HTTP 200 OK thông báo cập nhật thành công
         return ResponseEntity.ok(
                 ApiResponse.<Void>builder()
                         .success(true)

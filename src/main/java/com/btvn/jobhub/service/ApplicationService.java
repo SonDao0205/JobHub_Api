@@ -9,13 +9,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface ApplicationService {
     ApplicationResponse applyForJob(Long jobPostingId, String coverLetter, MultipartFile cvFile, Long candidateId);
-
-    // 💡 THÊM CÁC HÀM XỬ LÝ TRẠNG THÁI CHO EMPLOYER (Có kèm ID của người dùng đăng nhập để kiểm tra bảo mật chéo)
     ApplicationResponse reviewApplication(Long applicationId, Long employerId);
     ApplicationResponse inviteInterview(Long applicationId, Long employerId);
     ApplicationResponse acceptApplication(Long applicationId, Long employerId);
     ApplicationResponse rejectApplication(Long applicationId, Long employerId);
-
-    // 💡 THÊM HÀM LẤY LỊCH SỬ CHO CANDIDATE
     Page<ApplicationResponse> getCandidateApplications(Long candidateId, Pageable pageable);
 }

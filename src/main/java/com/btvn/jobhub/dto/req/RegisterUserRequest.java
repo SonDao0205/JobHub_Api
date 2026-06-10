@@ -23,7 +23,7 @@ public class RegisterUserRequest {
     @NotNull(message = "Quyền (Role) không được để trống")
     private RoleEnum role;
 
-    // Viết một hàm boolean có tiền tố "is" để Spring Validation tự động gọi
+
     @JsonIgnore
     @AssertTrue(message = "Chỉ được phép đăng ký với quyền EMPLOYER hoặc CANDIDATE")
     public boolean isValidRole() {

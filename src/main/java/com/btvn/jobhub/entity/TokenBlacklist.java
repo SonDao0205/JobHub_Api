@@ -7,14 +7,14 @@ import java.time.LocalDateTime;
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class TokenBlacklist {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // [cite: 168, 172]
+    private Long id;
 
     @Column(nullable = false, unique = true, length = 512)
-    private String tokenString; // [cite: 170]
+    private String tokenString;
 
-    private LocalDateTime revokedAt; // [cite: 171]
+    private LocalDateTime revokedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user; // [cite: 140]
+    private User user;
 }

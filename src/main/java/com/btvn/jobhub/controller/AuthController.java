@@ -23,7 +23,7 @@ public class AuthController {
 
     private final AuthService authService;
 
-    // FR-04: Đăng ký tài khoản mới
+
     @PostMapping("/register")
     public ResponseEntity<ApiResponse<UserResponse>> registerUser(@Valid @RequestBody RegisterUserRequest request) {
         UserResponse response = authService.register(request);
@@ -36,7 +36,6 @@ public class AuthController {
         );
     }
 
-    // FR-01 / UC-01: Đăng nhập hệ thống
     @PostMapping("/login")
     public ResponseEntity<ApiResponse<AuthResponse>> authenticateUser(@Valid @RequestBody LoginRequest request) {
         AuthResponse response = authService.login(request);
@@ -49,7 +48,6 @@ public class AuthController {
         );
     }
 
-    // FR-02: Xoay vòng Token (Refresh Token)
     @PostMapping("/refresh")
     public ResponseEntity<ApiResponse<AuthResponse>> refreshSession(@Valid @RequestBody RefreshTokenRequest request) {
         AuthResponse response = authService.refreshToken(request.getRefreshToken());
@@ -62,7 +60,6 @@ public class AuthController {
         );
     }
 
-    // FR-03 / UC-03: Đăng xuất và thu hồi Token quyền truy cập
     @PostMapping("/logout")
     public ResponseEntity<ApiResponse<Void>> logoutUser(HttpServletRequest request) {
         String token = parseJwtFromHeader(request);
@@ -91,7 +88,6 @@ public class AuthController {
         );
     }
 
-    // Quên mật khẩu Bước 1: Gửi yêu cầu sinh mã Token xác thực
     @PostMapping("/forgot-password")
     public ResponseEntity<ApiResponse<Void>> forgotPassword(@Valid @RequestBody ForgotPasswordRequest request) {
         authService.processForgotPassword(request);
@@ -103,7 +99,6 @@ public class AuthController {
         );
     }
 
-    // Quên mật khẩu Bước 2: Truyền mã Token kèm mật khẩu mới để reset
     @PostMapping("/reset-password")
     public ResponseEntity<ApiResponse<Void>> resetPassword(@Valid @RequestBody ResetPasswordRequest request) {
         authService.resetPassword(request);

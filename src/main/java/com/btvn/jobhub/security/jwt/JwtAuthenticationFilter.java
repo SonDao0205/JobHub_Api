@@ -40,10 +40,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         try {
             String jwt = getJwtFromRequest(request);
 
-            // Kiểm tra Token hợp lệ và KHÔNG nằm trong danh sách đen (Blacklist)
             if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
                 if (tokenBlacklistRepository.existsByTokenString(jwt)) {
-                    // Nếu nằm trong danh sách đen, chặn quyền truy cập ngay lập tức
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token đã bị vô hiệu hóa do đăng xuất.");
                     return;
                 }
@@ -60,7 +58,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 }
             }
         } catch (Exception ex) {
-            // Đảm bảo không làm sập luồng filter hệ thống
             SecurityContextHolder.clearContext();
         }
 

@@ -42,7 +42,6 @@ public class AuthServiceImpl implements AuthService {
     @Override
     @Transactional
     public UserResponse register(RegisterUserRequest request) {
-        // Đã tồn tại Email -> 409 Conflict
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new ResourceConflictException("Email này đã được sử dụng trong hệ thống.");
         }
@@ -87,14 +86,12 @@ public class AuthServiceImpl implements AuthService {
                     .role(role)
                     .build();
         } catch (BadCredentialsException e) {
-            // Spring Security ném ra lỗi này, GlobalExceptionHandler sẽ tóm và biến đổi về 401
             throw new BadCredentialsException("Tài khoản hoặc mật khẩu không chính xác.");
         }
     }
 
     @Override
     public AuthResponse refreshToken(String refreshToken) {
-        // Token hết hạn hoặc fake -> 401 Unauthorized
         if (!tokenProvider.validateToken(refreshToken)) {
             throw new UnauthorizedException("Mã Refresh Token không hợp lệ hoặc đã hết hiệu lực.");
         }
@@ -102,7 +99,6 @@ public class AuthServiceImpl implements AuthService {
         String email = tokenProvider.getEmailFromJwt(refreshToken);
         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
-        // Tài khoản bị block -> 401 Unauthorized hoặc 403 tùy góc nhìn, ở đây dùng Unauthorized
         if (!userDetails.isEnabled()) {
             throw new UnauthorizedException("Tài khoản đã bị khóa hoặc vô hiệu hóa.");
         }
@@ -167,10 +163,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     @Transactional
     public void resetPassword(ResetPasswordRequest request) {
-        User user = userRepository.findAll().stream()
-                .filter(u -> request.getToken().equals(u.getResetToken()))
-                .findFirst()
-                .orElseThrow(() -> new BadRequestException("Mã xác thực (Token) không hợp lệ hoặc không tồn tại."));
+        User user = userRepository.findByResetToken(request.getToken()).orElseThrow(() -> new BadRequestException("Mã xác thực (Token) không hợp lệ hoặc không tồn tại."));
 
         if (user.getResetTokenExpiry() == null || user.getResetTokenExpiry().isBefore(LocalDateTime.now())) {
             throw new BadRequestException("Mã xác thực (Token) đã hết hiệu lực. Vui lòng yêu cầu lại.");

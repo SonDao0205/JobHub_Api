@@ -27,7 +27,6 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UserResponse createUser(CreateUserRequest request) {
-        // Trùng email hệ thống -> 409 Conflict
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new ResourceConflictException("Email này đã được sử dụng trong hệ thống.");
         }

@@ -30,7 +30,6 @@ public class SecurityConfig {
     private final UserPrincipalService userPrincipalService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    // Thiết lập thuật toán mã băm mật khẩu BCrypt với độ mạnh (strength) = 10
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(10);
@@ -51,23 +50,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                // 1. Vô hiệu hóa CSRF vì hệ thống sử dụng RESTful API không trạng thái (Stateless)
                 .csrf(AbstractHttpConfigurer::disable)
 
-                // 2. Thiết lập cơ chế quản lý phiên không lưu trữ trạng thái trên Server
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-                // 3. Ma trận kiểm soát phân quyền đường dẫn API dựa trên Role
                 .authorizeHttpRequests(auth -> auth
-                        // Cấp quyền Public cho các cổng Auth hệ thống công cộng
-                                // 1. Cổng mở hoàn toàn tự do (Public)
                                 .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/refresh", "/api/auth/forgot-password", "/api/auth/reset-password").permitAll()
                                 .requestMatchers("/api/auth/change-password").authenticated()
 
-                                // 2. Phân quyền hệ thống User (Chỉ Admin)
                                 .requestMatchers("/api/users/**").hasRole("ADMIN")
 
-                                // 3. Phân quyền Hệ thống quản lý Tin tuyển dụng (Job Posting)
                                 .requestMatchers("/api/jobs/search").hasAnyRole("ADMIN", "EMPLOYER")
                                 .requestMatchers("/api/jobs/createJob").hasRole("EMPLOYER")
                                 .requestMatchers("/api/jobs/*/submit-approval").hasRole("EMPLOYER")
@@ -75,21 +67,17 @@ public class SecurityConfig {
                                 .requestMatchers("/api/jobs/*/approve").hasRole("ADMIN")
                                 .requestMatchers("/api/jobs/*/reject").hasRole("ADMIN")
                                 .requestMatchers("/api/jobs/jobApproved").hasAnyRole("CANDIDATE","EMPLOYER","ADMIN")
-                                // 4. Phân quyền Hệ thống Đơn ứng tuyển (Application)
                                 .requestMatchers("/api/applications/apply").hasRole("CANDIDATE")
                                 .requestMatchers("/api/applications/history").hasRole("CANDIDATE")
                                 .requestMatchers("/api/applications/*/review").hasRole("EMPLOYER")
                                 .requestMatchers("/api/applications/*/interview").hasRole("EMPLOYER")
                                 .requestMatchers("/api/applications/*/accept").hasRole("EMPLOYER")
                                 .requestMatchers("/api/applications/*/reject").hasRole("EMPLOYER")
-                        // Mọi đường dẫn khác nằm ngoài danh sách trên đều có thể tự do truy cập công khai
                         .anyRequest().permitAll()
                 );
 
-        // Đăng ký kiến trúc kiểm tra chứng thực bảo mật
         http.authenticationProvider(authenticationProvider());
 
-        // Thêm Bộ lọc kiểm tra JWT trước bộ lọc kiểm định Username/Password mặc định
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

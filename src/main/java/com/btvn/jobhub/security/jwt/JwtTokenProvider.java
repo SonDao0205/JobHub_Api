@@ -32,13 +32,11 @@ public class JwtTokenProvider {
         this.key = Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
 
-    // Tạo AccessToken (Tuổi thọ ngắn)
     public String generateAccessToken(Authentication authentication) {
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
         return generateTokenFromUserPrincipal(userPrincipal, jwtAccessExpirationMs);
     }
 
-    // Tạo RefreshToken (Tuổi thọ dài)
     public String generateRefreshToken(Authentication authentication) {
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
         return generateTokenFromUserPrincipal(userPrincipal, jwtRefreshExpirationMs);
@@ -61,7 +59,6 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    // Lấy Email từ chuỗi JWT Token
     public String getEmailFromJwt(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(key)
@@ -71,13 +68,11 @@ public class JwtTokenProvider {
         return claims.getSubject();
     }
 
-    // Kiểm tra cấu trúc logic của Token
     public boolean validateToken(String authToken) {
         try {
             Jwts.parser().setSigningKey(key).build().parseClaimsJws(authToken);
             return true;
         } catch (JwtException | IllegalArgumentException ex) {
-            // Có thể bổ sung Logger qua AOP hoặc ghi đè log lỗi tại đây nếu cần
             return false;
         }
     }

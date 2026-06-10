@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface JobPostingService {
-    JobPostingResponse createJob(JobPostingRequest request, Long employerId); // [cite: 34]
+    JobPostingResponse createJob(JobPostingRequest request, Long employerId);
     Page<JobPostingResponse> getAllJobs(JobStatusEnum status, Pageable pageable);
     JobPostingResponse submitJobForApproval(Long jobId, Long employerId);
     JobPostingResponse closeJob(Long jobId, Long employerId);

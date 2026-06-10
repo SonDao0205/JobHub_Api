@@ -20,7 +20,6 @@ public class UserPrincipal implements UserDetails {
     private final Boolean isActive;
 
     public static UserPrincipal create(User user) {
-        // Ánh xạ RoleEnum trực tiếp thành Quyền trong Spring Security
         GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + user.getRole().name());
 
         return new UserPrincipal(
@@ -44,7 +43,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email; // Sử dụng email làm username định danh hệ thống
+        return email;
     }
 
     @Override
@@ -54,7 +53,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return isActive; // Tài khoản bị khóa nếu isActive = false
+        return isActive;
     }
 
     @Override

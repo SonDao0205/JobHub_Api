@@ -66,7 +66,6 @@ public class JobPostingServiceImpl implements JobPostingService {
         JobPosting jobPosting = jobPostingRepository.findById(jobId)
                 .orElseThrow(() -> new BadRequestException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
 
-        // Phân quyền bảo mật chéo dữ liệu công ty -> 403 Forbidden
         if (!jobPosting.getEmployer().getId().equals(employerId)) {
             throw new ForbiddenException("Bạn không có quyền chỉnh sửa tin tuyển dụng của công ty khác.");
         }

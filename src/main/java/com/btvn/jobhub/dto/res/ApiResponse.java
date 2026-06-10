@@ -8,7 +8,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 public class ApiResponse<T> {
-    private boolean success; // [cite: 294]
-    private String message; // [cite: 295]
-    private T data; // [cite: 296]
+    private boolean success;
+    private String message;
+    private T data;
 }

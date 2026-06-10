@@ -9,23 +9,23 @@ import java.time.LocalDateTime;
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class Application {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // [cite: 173]
+    private Long id;
 
     @Column(columnDefinition = "TEXT")
-    private String coverLetter; // [cite: 174]
+    private String coverLetter;
 
-    private String cvUrl; // [cite: 175]
+    private String cvUrl;
 
-    private LocalDateTime appliedAt; // [cite: 176]
+    private LocalDateTime appliedAt;
 
     @Enumerated(EnumType.STRING)
-    private ApplicationStatusEnum status; // [cite: 177]
+    private ApplicationStatusEnum status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "candidate_id")
-    private User candidate; // [cite: 144]
+    private User candidate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "job_posting_id")
-    private JobPosting jobPosting; // [cite: 154]
+    private JobPosting jobPosting;
 }

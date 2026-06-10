@@ -12,7 +12,5 @@ import java.util.List;
 public interface ApplicationRepository extends JpaRepository<Application, Long> {
     boolean existsByCandidateIdAndJobPostingId(Long candidateId, Long jobId);
     List<Application> findByJobPostingId(Long jobId);
-
-    // 💡 THÊM HÀM NÀY: Tìm danh sách đơn ứng tuyển của một Ứng viên (Có phân trang)
     Page<Application> findByCandidateId(Long candidateId, Pageable pageable);
 }

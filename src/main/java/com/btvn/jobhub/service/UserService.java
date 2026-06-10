@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface UserService {
-    UserResponse createUser(CreateUserRequest request); //
+    UserResponse createUser(CreateUserRequest request);
     Page<UserResponse> getAllUsers(Pageable pageable);
-    void toggleUserStatus(Long userId, boolean isActive); //
+    void toggleUserStatus(Long userId, boolean isActive);
 }
