@@ -6,6 +6,8 @@ import com.btvn.jobhub.dto.res.UserResponse;
 import com.btvn.jobhub.entity.JobPosting;
 import com.btvn.jobhub.entity.User;
 import com.btvn.jobhub.entity.enumType.JobStatusEnum;
+import com.btvn.jobhub.exception.BadRequestException;
+import com.btvn.jobhub.exception.ForbiddenException;
 import com.btvn.jobhub.repository.JobPostingRepository;
 import com.btvn.jobhub.repository.UserRepository;
 import com.btvn.jobhub.service.JobPostingService;
@@ -31,7 +33,7 @@ public class JobPostingServiceImpl implements JobPostingService {
     @Transactional
     public JobPostingResponse createJob(JobPostingRequest request, Long employerId) {
         User employer = userRepository.findById(employerId)
-                .orElseThrow(() -> new RuntimeException("Không tìm thấy thông tin nhà tuyển dụng có ID: " + employerId));
+                .orElseThrow(() -> new BadRequestException("Không tìm thấy thông tin nhà tuyển dụng có ID: " + employerId));
 
         JobPosting jobPosting = JobPosting.builder()
                 .title(request.getTitle())
@@ -58,24 +60,19 @@ public class JobPostingServiceImpl implements JobPostingService {
         return new PageImpl<>(dtoList, pageable, jobPage.getTotalElements());
     }
 
-    // =========================================================================
-    // KHU VỰC LOGIC CỦA NHÀ TUYỂN DỤNG (EMPLOYER)
-    // =========================================================================
-
     @Override
     @Transactional
     public JobPostingResponse submitJobForApproval(Long jobId, Long employerId) {
         JobPosting jobPosting = jobPostingRepository.findById(jobId)
-                .orElseThrow(() -> new RuntimeException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
+                .orElseThrow(() -> new BadRequestException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
 
-        // Kiểm tra quyền sở hữu bài đăng
+        // Phân quyền bảo mật chéo dữ liệu công ty -> 403 Forbidden
         if (!jobPosting.getEmployer().getId().equals(employerId)) {
-            throw new RuntimeException("Bạn không có quyền chỉnh sửa tin tuyển dụng của công ty khác.");
+            throw new ForbiddenException("Bạn không có quyền chỉnh sửa tin tuyển dụng của công ty khác.");
         }
 
-        // Kiểm tra logic vòng đời: Chỉ cho phép gửi duyệt khi đang là tin nháp (DRAFT)
         if (jobPosting.getStatus() != JobStatusEnum.DRAFT) {
-            throw new RuntimeException("Nhà tuyển dụng chỉ được gửi duyệt khi tin ở trạng thái DRAFT. Trạng thái hiện tại: " + jobPosting.getStatus());
+            throw new BadRequestException("Nhà tuyển dụng chỉ được gửi duyệt khi tin ở trạng thái DRAFT. Trạng thái hiện tại: " + jobPosting.getStatus());
         }
 
         jobPosting.setStatus(JobStatusEnum.PENDING_APPROVAL);
@@ -86,35 +83,28 @@ public class JobPostingServiceImpl implements JobPostingService {
     @Transactional
     public JobPostingResponse closeJob(Long jobId, Long employerId) {
         JobPosting jobPosting = jobPostingRepository.findById(jobId)
-                .orElseThrow(() -> new RuntimeException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
+                .orElseThrow(() -> new BadRequestException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
 
-        // Kiểm tra quyền sở hữu bài đăng
         if (!jobPosting.getEmployer().getId().equals(employerId)) {
-            throw new RuntimeException("Bạn không có quyền đóng tin tuyển dụng của công ty khác.");
+            throw new ForbiddenException("Bạn không có quyền đóng tin tuyển dụng của công ty khác.");
         }
 
-        // Kiểm tra logic vòng đời: Không thể đóng một tin chưa từng được gửi duyệt (vẫn là nháp)
         if (jobPosting.getStatus() == JobStatusEnum.DRAFT) {
-            throw new RuntimeException("Không thể đóng một tin tuyển dụng đang nằm ở trạng thái nháp (DRAFT).");
+            throw new BadRequestException("Không thể đóng một tin tuyển dụng đang nằm ở trạng thái nháp (DRAFT).");
         }
 
         jobPosting.setStatus(JobStatusEnum.CLOSED);
         return convertToJobPostingResponse(jobPostingRepository.save(jobPosting));
     }
 
-    // =========================================================================
-    // KHU VỰC LOGIC CỦA QUẢN TRỊ VIÊN (ADMIN)
-    // =========================================================================
-
     @Override
     @Transactional
     public JobPostingResponse approveJob(Long jobId) {
         JobPosting jobPosting = jobPostingRepository.findById(jobId)
-                .orElseThrow(() -> new RuntimeException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
+                .orElseThrow(() -> new BadRequestException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
 
-        // Tùy chọn kiểm tra (nếu muốn chặt chẽ): Chỉ duyệt tin đang chờ duyệt
         if (jobPosting.getStatus() != JobStatusEnum.PENDING_APPROVAL) {
-            throw new RuntimeException("Chỉ có thể phê duyệt các tin tuyển dụng đang chờ duyệt (PENDING_APPROVAL).");
+            throw new BadRequestException("Chỉ có thể phê duyệt các tin tuyển dụng đang chờ duyệt (PENDING_APPROVAL).");
         }
 
         jobPosting.setStatus(JobStatusEnum.APPROVED);
@@ -125,18 +115,16 @@ public class JobPostingServiceImpl implements JobPostingService {
     @Transactional
     public JobPostingResponse rejectJob(Long jobId) {
         JobPosting jobPosting = jobPostingRepository.findById(jobId)
-                .orElseThrow(() -> new RuntimeException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
+                .orElseThrow(() -> new BadRequestException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
 
-        // Tùy chọn kiểm tra (nếu muốn chặt chẽ): Chỉ từ chối tin đang chờ duyệt
         if (jobPosting.getStatus() != JobStatusEnum.PENDING_APPROVAL) {
-            throw new RuntimeException("Chỉ có thể từ chối các tin tuyển dụng đang chờ duyệt (PENDING_APPROVAL).");
+            throw new BadRequestException("Chỉ có thể từ chối các tin tuyển dụng đang chờ duyệt (PENDING_APPROVAL).");
         }
 
         jobPosting.setStatus(JobStatusEnum.REJECTED);
         return convertToJobPostingResponse(jobPostingRepository.save(jobPosting));
     }
 
-    // Helper: Chuyển đổi dữ liệu từ Entity sang DTO phản hồi
     private JobPostingResponse convertToJobPostingResponse(JobPosting job) {
         User employerEntity = job.getEmployer();
 

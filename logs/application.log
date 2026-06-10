@@ -4127,3 +4127,8 @@ java.lang.IllegalStateException: ApplicationContext failure threshold (1) exceed
 2026-06-09T22:51:25.865+07:00  INFO 16819 --- [JobHub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-06-09T22:51:26.081+07:00  INFO 16819 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-06-09T22:51:26.085+07:00  INFO 16819 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-09T22:53:40.797+07:00  INFO 15352 --- [JobHub] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-09T22:53:40.801+07:00  INFO 15352 --- [JobHub] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-09T22:53:40.804+07:00  INFO 15352 --- [JobHub] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-09T22:53:40.805+07:00  INFO 15352 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-06-09T22:53:40.807+07:00  INFO 15352 --- [JobHub] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
