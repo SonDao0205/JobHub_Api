@@ -8,6 +8,7 @@ import com.btvn.jobhub.entity.User;
 import com.btvn.jobhub.entity.enumType.JobStatusEnum;
 import com.btvn.jobhub.exception.BadRequestException;
 import com.btvn.jobhub.exception.ForbiddenException;
+import com.btvn.jobhub.exception.ResourceNotFoundException;
 import com.btvn.jobhub.repository.JobPostingRepository;
 import com.btvn.jobhub.repository.UserRepository;
 import com.btvn.jobhub.service.JobPostingService;
@@ -33,7 +34,7 @@ public class JobPostingServiceImpl implements JobPostingService {
     @Transactional
     public JobPostingResponse createJob(JobPostingRequest request, Long employerId) {
         User employer = userRepository.findById(employerId)
-                .orElseThrow(() -> new BadRequestException("Không tìm thấy thông tin nhà tuyển dụng có ID: " + employerId));
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy thông tin nhà tuyển dụng có ID: " + employerId));
 
         JobPosting jobPosting = JobPosting.builder()
                 .title(request.getTitle())
@@ -64,7 +65,7 @@ public class JobPostingServiceImpl implements JobPostingService {
     @Transactional
     public JobPostingResponse submitJobForApproval(Long jobId, Long employerId) {
         JobPosting jobPosting = jobPostingRepository.findById(jobId)
-                .orElseThrow(() -> new BadRequestException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
 
         if (!jobPosting.getEmployer().getId().equals(employerId)) {
             throw new ForbiddenException("Bạn không có quyền chỉnh sửa tin tuyển dụng của công ty khác.");
@@ -82,7 +83,7 @@ public class JobPostingServiceImpl implements JobPostingService {
     @Transactional
     public JobPostingResponse closeJob(Long jobId, Long employerId) {
         JobPosting jobPosting = jobPostingRepository.findById(jobId)
-                .orElseThrow(() -> new BadRequestException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
 
         if (!jobPosting.getEmployer().getId().equals(employerId)) {
             throw new ForbiddenException("Bạn không có quyền đóng tin tuyển dụng của công ty khác.");
@@ -100,7 +101,7 @@ public class JobPostingServiceImpl implements JobPostingService {
     @Transactional
     public JobPostingResponse approveJob(Long jobId) {
         JobPosting jobPosting = jobPostingRepository.findById(jobId)
-                .orElseThrow(() -> new BadRequestException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
 
         if (jobPosting.getStatus() != JobStatusEnum.PENDING_APPROVAL) {
             throw new BadRequestException("Chỉ có thể phê duyệt các tin tuyển dụng đang chờ duyệt (PENDING_APPROVAL).");
@@ -114,7 +115,7 @@ public class JobPostingServiceImpl implements JobPostingService {
     @Transactional
     public JobPostingResponse rejectJob(Long jobId) {
         JobPosting jobPosting = jobPostingRepository.findById(jobId)
-                .orElseThrow(() -> new BadRequestException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy tin tuyển dụng có ID: " + jobId));
 
         if (jobPosting.getStatus() != JobStatusEnum.PENDING_APPROVAL) {
             throw new BadRequestException("Chỉ có thể từ chối các tin tuyển dụng đang chờ duyệt (PENDING_APPROVAL).");

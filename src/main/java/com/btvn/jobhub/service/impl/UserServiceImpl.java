@@ -5,6 +5,7 @@ import com.btvn.jobhub.dto.res.UserResponse;
 import com.btvn.jobhub.entity.User;
 import com.btvn.jobhub.exception.BadRequestException;
 import com.btvn.jobhub.exception.ResourceConflictException;
+import com.btvn.jobhub.exception.ResourceNotFoundException;
 import com.btvn.jobhub.repository.UserRepository;
 import com.btvn.jobhub.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -58,7 +59,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void toggleUserStatus(Long userId, boolean isActive) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new BadRequestException("Không tìm thấy người dùng có ID: " + userId));
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy người dùng có ID: " + userId));
 
         user.setIsActive(isActive);
         userRepository.save(user);

@@ -7,6 +7,7 @@ import com.btvn.jobhub.entity.TokenBlacklist;
 import com.btvn.jobhub.entity.User;
 import com.btvn.jobhub.exception.BadRequestException;
 import com.btvn.jobhub.exception.ResourceConflictException;
+import com.btvn.jobhub.exception.ResourceNotFoundException;
 import com.btvn.jobhub.exception.UnauthorizedException;
 import com.btvn.jobhub.repository.TokenBlacklistRepository;
 import com.btvn.jobhub.repository.UserRepository;
@@ -117,7 +118,7 @@ public class AuthServiceImpl implements AuthService {
         if (tokenProvider.validateToken(accessToken)) {
             String email = tokenProvider.getEmailFromJwt(accessToken);
             User user = userRepository.findByEmail(email)
-                    .orElseThrow(() -> new BadRequestException("Không tìm thấy thông tin người dùng."));
+                    .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy thông tin người dùng."));
 
             TokenBlacklist blacklistEntry = TokenBlacklist.builder()
                     .tokenString(accessToken)
@@ -134,7 +135,7 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     public void changePassword(ChangePasswordRequest request, Long userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new BadRequestException("Không tìm thấy người dùng."));
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy người dùng."));
 
         if (!passwordEncoder.matches(request.getOldPassword(), user.getPasswordHash())) {
             throw new BadRequestException("Mật khẩu hiện tại không chính xác.");
@@ -152,7 +153,7 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     public void processForgotPassword(ForgotPasswordRequest request) {
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new BadRequestException("Không tìm thấy tài khoản nào liên kết với Email này."));
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy tài khoản nào liên kết với Email này."));
 
         String token = UUID.randomUUID().toString();
         user.setResetToken(token);

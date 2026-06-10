@@ -1,6 +1,5 @@
 package com.btvn.jobhub.service.impl;
 
-import com.btvn.jobhub.dto.req.ApplicationRequest;
 import com.btvn.jobhub.dto.res.ApplicationResponse;
 import com.btvn.jobhub.entity.Application;
 import com.btvn.jobhub.entity.JobPosting;
@@ -10,6 +9,7 @@ import com.btvn.jobhub.entity.enumType.JobStatusEnum;
 import com.btvn.jobhub.exception.BadRequestException;
 import com.btvn.jobhub.exception.ForbiddenException;
 import com.btvn.jobhub.exception.ResourceConflictException;
+import com.btvn.jobhub.exception.ResourceNotFoundException;
 import com.btvn.jobhub.repository.ApplicationRepository;
 import com.btvn.jobhub.repository.JobPostingRepository;
 import com.btvn.jobhub.repository.UserRepository;
@@ -47,14 +47,14 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
 
         JobPosting jobPosting = jobPostingRepository.findById(jobPostingId)
-                .orElseThrow(() -> new BadRequestException("Không tìm thấy tin tuyển dụng có ID: " + jobPostingId));
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy tin tuyển dụng có ID: " + jobPostingId));
 
         if (jobPosting.getStatus() != JobStatusEnum.APPROVED) {
             throw new BadRequestException("Tin tuyển dụng này hiện không mở nhận hồ sơ.");
         }
 
         User candidate = userRepository.findById(candidateId)
-                .orElseThrow(() -> new BadRequestException("Không tìm thấy thông tin ứng viên."));
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy thông tin ứng viên có ID: " + candidateId));
 
         String generatedCvUrl = cloudinaryService.uploadFile(cvFile);
 
@@ -117,7 +117,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     private Application getValidatedApplication(Long applicationId, Long employerId) {
         Application app = applicationRepository.findById(applicationId)
-                .orElseThrow(() -> new BadRequestException("Không tìm thấy hồ sơ ứng tuyển có ID: " + applicationId));
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy hồ sơ ứng tuyển có ID: " + applicationId));
 
         Long actualEmployerId = app.getJobPosting().getEmployer().getId();
         if (!actualEmployerId.equals(employerId)) {
