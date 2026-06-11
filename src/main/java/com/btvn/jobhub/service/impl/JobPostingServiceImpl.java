@@ -54,11 +54,7 @@ public class JobPostingServiceImpl implements JobPostingService {
     public Page<JobPostingResponse> getAllJobs(JobStatusEnum status, Pageable pageable) {
         Page<JobPosting> jobPage = jobPostingRepository.findByStatus(status, pageable);
 
-        List<JobPostingResponse> dtoList = jobPage.getContent().stream()
-                .map(this::convertToJobPostingResponse)
-                .collect(Collectors.toList());
-
-        return new PageImpl<>(dtoList, pageable, jobPage.getTotalElements());
+        return jobPage.map(this::convertToJobPostingResponse);
     }
 
     @Override

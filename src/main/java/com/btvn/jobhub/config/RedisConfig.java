@@ -1,23 +1,22 @@
 package com.btvn.jobhub.config;
 
-import org.springframework.beans.factory.annotation.Value; // Thêm import này
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
-import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration; // Thêm import này
+import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJacksonJsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import tools.jackson.databind.ObjectMapper;
 
-import java.time.Duration; // Thêm import này
+import java.time.Duration;
 
 @Configuration
 public class RedisConfig {
 
-    // Lấy cấu hình từ file application.properties
     @Value("${spring.data.redis.host}")
     private String redisHost;
 
@@ -49,6 +48,7 @@ public class RedisConfig {
         template.setConnectionFactory(connectionFactory);
 
         StringRedisSerializer stringSerializer = new StringRedisSerializer();
+
         ObjectMapper objectMapper = new ObjectMapper();
         GenericJacksonJsonRedisSerializer jsonSerializer = new GenericJacksonJsonRedisSerializer(objectMapper);
 

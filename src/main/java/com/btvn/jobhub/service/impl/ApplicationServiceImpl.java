@@ -108,11 +108,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public Page<ApplicationResponse> getCandidateApplications(Long candidateId, Pageable pageable) {
         Page<Application> appPage = applicationRepository.findByCandidateId(candidateId, pageable);
 
-        List<ApplicationResponse> dtoList = appPage.getContent().stream()
-                .map(this::convertToApplicationResponse)
-                .collect(Collectors.toList());
-
-        return new PageImpl<>(dtoList, pageable, appPage.getTotalElements());
+        return appPage.map(this::convertToApplicationResponse);
     }
 
     private Application getValidatedApplication(Long applicationId, Long employerId) {

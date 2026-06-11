@@ -6,7 +6,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "job_postings")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class JobPosting {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

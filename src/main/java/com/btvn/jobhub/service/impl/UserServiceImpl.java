@@ -46,12 +46,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public Page<UserResponse> getAllUsers(Pageable pageable) {
         Page<User> userPage = userRepository.findAll(pageable);
-
-        List<UserResponse> userResponses = userPage.getContent().stream()
-                .map(this::convertToUserResponse)
-                .collect(Collectors.toList());
-
-        return new PageImpl<>(userResponses, pageable, userPage.getTotalElements());
+        return userPage.map(this::convertToUserResponse);
     }
 
     @Override
