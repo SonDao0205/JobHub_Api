@@ -1,4 +1,4 @@
-package com.btvn.jobhub.security.config;
+package com.btvn.jobhub.config;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
