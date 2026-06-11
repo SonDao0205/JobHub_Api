@@ -1,10 +1,8 @@
 package com.btvn.jobhub.controller;
 
 import com.btvn.jobhub.dto.req.JobPostingRequest;
-import com.btvn.jobhub.dto.req.UpdateJobStatusRequest;
 import com.btvn.jobhub.dto.res.ApiResponse;
 import com.btvn.jobhub.dto.res.JobPostingResponse;
-import com.btvn.jobhub.entity.User;
 import com.btvn.jobhub.entity.enumType.JobStatusEnum;
 import com.btvn.jobhub.security.principal.UserPrincipal;
 import com.btvn.jobhub.service.JobPostingService;
@@ -16,7 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +30,6 @@ public class JobPostingController {
             @AuthenticationPrincipal UserPrincipal userPrincipal) {
 
         Long employerId = userPrincipal.getId();
-
         JobPostingResponse response = jobPostingService.createJob(request, employerId);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(
@@ -47,38 +43,19 @@ public class JobPostingController {
 
     @GetMapping("/search")
     public ResponseEntity<ApiResponse<Page<JobPostingResponse>>> getJobsByStatus(
-            @RequestParam JobStatusEnum status,
+            @RequestParam(required = false) JobStatusEnum status,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "5") int size,
-            @RequestParam(defaultValue = "id") String sortBy) {
+            @RequestParam(defaultValue = "id") String sortBy,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
 
         Pageable pageable = PageRequest.of(page - 1, size, Sort.by(sortBy).descending());
-
-        Page<JobPostingResponse> jobPage = jobPostingService.getAllJobs(status, pageable);
+        Page<JobPostingResponse> jobPage = jobPostingService.getAllJobs(status, userPrincipal, pageable);
 
         return ResponseEntity.ok(
                 ApiResponse.<Page<JobPostingResponse>>builder()
                         .success(true)
-                        .message("Lấy danh sách tin tuyển dụng theo trạng thái " + status + " thành công.")
-                        .data(jobPage)
-                        .build()
-        );
-    }
-
-    @GetMapping("/jobApproved")
-    public ResponseEntity<ApiResponse<Page<JobPostingResponse>>> getApprovedJobs(
-            @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "5") int size,
-            @RequestParam(defaultValue = "id") String sortBy) {
-
-        Pageable pageable = PageRequest.of(page - 1, size, Sort.by(sortBy).descending());
-
-        Page<JobPostingResponse> jobPage = jobPostingService.getAllJobs(JobStatusEnum.APPROVED, pageable);
-
-        return ResponseEntity.ok(
-                ApiResponse.<Page<JobPostingResponse>>builder()
-                        .success(true)
-                        .message("Lấy danh sách việc làm đang tuyển dụng thành công.")
+                        .message("Lấy danh sách tin tuyển dụng thành công.")
                         .data(jobPage)
                         .build()
         );
@@ -120,7 +97,6 @@ public class JobPostingController {
 
     @PutMapping("/{id}/approve")
     public ResponseEntity<ApiResponse<JobPostingResponse>> approveJob(@PathVariable Long id) {
-
         JobPostingResponse response = jobPostingService.approveJob(id);
 
         return ResponseEntity.ok(
@@ -134,7 +110,6 @@ public class JobPostingController {
 
     @PutMapping("/{id}/reject")
     public ResponseEntity<ApiResponse<JobPostingResponse>> rejectJob(@PathVariable Long id) {
-
         JobPostingResponse response = jobPostingService.rejectJob(id);
 
         return ResponseEntity.ok(

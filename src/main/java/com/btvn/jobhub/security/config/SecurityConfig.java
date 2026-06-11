@@ -51,33 +51,27 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-
                 .authorizeHttpRequests(auth -> auth
-                                .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/refresh", "/api/auth/forgot-password", "/api/auth/reset-password").permitAll()
-                                .requestMatchers("/api/auth/change-password").authenticated()
-
-                                .requestMatchers("/api/users/**").hasRole("ADMIN")
-
-                                .requestMatchers("/api/jobs/search").hasAnyRole("ADMIN", "EMPLOYER")
-                                .requestMatchers("/api/jobs/createJob").hasRole("EMPLOYER")
-                                .requestMatchers("/api/jobs/*/submit-approval").hasRole("EMPLOYER")
-                                .requestMatchers("/api/jobs/*/close").hasRole("EMPLOYER")
-                                .requestMatchers("/api/jobs/*/approve").hasRole("ADMIN")
-                                .requestMatchers("/api/jobs/*/reject").hasRole("ADMIN")
-                                .requestMatchers("/api/jobs/jobApproved").hasAnyRole("CANDIDATE","EMPLOYER","ADMIN")
-                                .requestMatchers("/api/applications/apply").hasRole("CANDIDATE")
-                                .requestMatchers("/api/applications/history").hasRole("CANDIDATE")
-                                .requestMatchers("/api/applications/*/review").hasRole("EMPLOYER")
-                                .requestMatchers("/api/applications/*/interview").hasRole("EMPLOYER")
-                                .requestMatchers("/api/applications/*/accept").hasRole("EMPLOYER")
-                                .requestMatchers("/api/applications/*/reject").hasRole("EMPLOYER")
+                        .requestMatchers("/api/v1/auth/register", "/api/v1/auth/login", "/api/v1/auth/refresh", "/api/v1/auth/forgot-password", "/api/v1/auth/reset-password").permitAll()
+                        .requestMatchers("/api/v1/auth/change-password").authenticated()
+                        .requestMatchers("/api/v1/users/**").hasRole("ADMIN")
+                        .requestMatchers("/api/v1/jobs/search").hasAnyRole("ADMIN", "EMPLOYER", "CANDIDATE")
+                        .requestMatchers("/api/v1/jobs/createJob").hasRole("EMPLOYER")
+                        .requestMatchers("/api/v1/jobs/*/submit-approval").hasRole("EMPLOYER")
+                        .requestMatchers("/api/v1/jobs/*/close").hasRole("EMPLOYER")
+                        .requestMatchers("/api/v1/jobs/*/approve").hasRole("ADMIN")
+                        .requestMatchers("/api/v1/jobs/*/reject").hasRole("ADMIN")
+                        .requestMatchers("/api/v1/applications/apply").hasRole("CANDIDATE")
+                        .requestMatchers("/api/v1/applications/history").hasRole("CANDIDATE")
+                        .requestMatchers("/api/v1/applications/*/review").hasRole("EMPLOYER")
+                        .requestMatchers("/api/v1/applications/*/interview").hasRole("EMPLOYER")
+                        .requestMatchers("/api/v1/applications/*/accept").hasRole("EMPLOYER")
+                        .requestMatchers("/api/v1/applications/*/reject").hasRole("EMPLOYER")
                         .anyRequest().permitAll()
                 );
 
         http.authenticationProvider(authenticationProvider());
-
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

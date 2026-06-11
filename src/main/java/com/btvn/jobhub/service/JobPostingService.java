@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface JobPostingService {
     JobPostingResponse createJob(JobPostingRequest request, Long employerId);
-    Page<JobPostingResponse> getAllJobs(JobStatusEnum status, Pageable pageable);
+    Page<JobPostingResponse> getAllJobs(JobStatusEnum status, UserPrincipal userPrincipal, Pageable pageable);
     JobPostingResponse submitJobForApproval(Long jobId, Long employerId);
     JobPostingResponse closeJob(Long jobId, Long employerId);
     JobPostingResponse approveJob(Long jobId);

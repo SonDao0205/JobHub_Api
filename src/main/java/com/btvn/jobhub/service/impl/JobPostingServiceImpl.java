@@ -11,17 +11,16 @@ import com.btvn.jobhub.exception.ForbiddenException;
 import com.btvn.jobhub.exception.ResourceNotFoundException;
 import com.btvn.jobhub.repository.jpa.JobPostingRepository;
 import com.btvn.jobhub.repository.jpa.UserRepository;
+import com.btvn.jobhub.security.principal.UserPrincipal;
 import com.btvn.jobhub.service.JobPostingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -51,8 +50,39 @@ public class JobPostingServiceImpl implements JobPostingService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<JobPostingResponse> getAllJobs(JobStatusEnum status, Pageable pageable) {
-        Page<JobPosting> jobPage = jobPostingRepository.findByStatus(status, pageable);
+    public Page<JobPostingResponse> getAllJobs(JobStatusEnum status, UserPrincipal userPrincipal, Pageable pageable) {
+        String role = userPrincipal.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .findFirst()
+                .orElse("");
+
+        Page<JobPosting> jobPage;
+
+        switch (role) {
+            case "ROLE_ADMIN":
+                if (status != null) {
+                    jobPage = jobPostingRepository.findByStatus(status, pageable);
+                } else {
+                    jobPage = jobPostingRepository.findAll(pageable);
+                }
+                break;
+
+            case "ROLE_EMPLOYER":
+                Long employerId = userPrincipal.getId();
+                if (status != null) {
+                    jobPage = jobPostingRepository.findByStatusAndEmployerId(status, employerId, pageable);
+                } else {
+                    jobPage = jobPostingRepository.findByEmployerId(employerId, pageable);
+                }
+                break;
+
+            case "ROLE_CANDIDATE":
+                jobPage = jobPostingRepository.findByStatus(JobStatusEnum.APPROVED, pageable);
+                break;
+
+            default:
+                throw new ForbiddenException("Vai trò của bạn không có quyền truy cập chức năng này.");
+        }
 
         return jobPage.map(this::convertToJobPostingResponse);
     }
