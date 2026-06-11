@@ -1,6 +1,6 @@
 package com.btvn.jobhub.security.jwt;
 
-import com.btvn.jobhub.repository.TokenBlacklistRepository;
+import com.btvn.jobhub.repository.redis.TokenBlacklistRepository;
 import com.btvn.jobhub.security.jwt.JwtTokenProvider;
 import com.btvn.jobhub.security.principal.UserPrincipalService;
 import jakarta.servlet.FilterChain;

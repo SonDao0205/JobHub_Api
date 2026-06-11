@@ -1,7 +1,7 @@
 package com.btvn.jobhub.security.principal;
 
 import com.btvn.jobhub.entity.User;
-import com.btvn.jobhub.repository.UserRepository;
+import com.btvn.jobhub.repository.jpa.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

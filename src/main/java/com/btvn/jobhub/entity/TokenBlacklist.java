@@ -1,20 +1,31 @@
 package com.btvn.jobhub.entity;
-import jakarta.persistence.*;
-import lombok.*;
-import java.time.LocalDateTime;
-@Entity
-@Table(name = "token_blacklist")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
-public class TokenBlacklist {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @Column(nullable = false, unique = true, length = 512)
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.TimeToLive;
+import org.springframework.data.redis.core.index.Indexed;
+
+import java.util.concurrent.TimeUnit;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@RedisHash("TokenBlacklist")
+public class TokenBlacklist {
+
+    @Id
+    private String id;
+
+    @Indexed
     private String tokenString;
 
-    private LocalDateTime revokedAt;
+    private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @TimeToLive(unit = TimeUnit.MILLISECONDS)
+    private Long ttl;
 }

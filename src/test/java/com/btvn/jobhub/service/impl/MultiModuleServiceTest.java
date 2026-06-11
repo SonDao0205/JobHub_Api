@@ -3,13 +3,11 @@ package com.btvn.jobhub.service.impl;
 import com.btvn.jobhub.dto.req.ChangePasswordRequest;
 import com.btvn.jobhub.dto.req.ResetPasswordRequest;
 import com.btvn.jobhub.dto.res.UserResponse;
-import com.btvn.jobhub.entity.JobPosting;
 import com.btvn.jobhub.entity.User;
-import com.btvn.jobhub.entity.enumType.JobStatusEnum;
 import com.btvn.jobhub.entity.enumType.RoleEnum;
-import com.btvn.jobhub.repository.ApplicationRepository;
-import com.btvn.jobhub.repository.JobPostingRepository;
-import com.btvn.jobhub.repository.UserRepository;
+import com.btvn.jobhub.repository.jpa.ApplicationRepository;
+import com.btvn.jobhub.repository.jpa.JobPostingRepository;
+import com.btvn.jobhub.repository.jpa.UserRepository;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Uploader;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +20,6 @@ import org.springframework.data.domain.*;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -67,7 +64,7 @@ class MultiModuleServiceTest {
     }
 
     @Test
-    @DisplayName("Service 2 [Auth]: Khôi phục mật khẩu (Reset) thành công - Token bị xóa dứt điểm ngay sau đó")
+    @DisplayName("Service 2 [Auth]: Khôi phục mật khẩu thành công - Token bị hủy dứt điểm ngay sau đó")
     void resetPassword_Success_AndClearToken() {
         User mockUser = User.builder()
                 .email("test@gmail.com")
@@ -79,12 +76,13 @@ class MultiModuleServiceTest {
         request.setToken("valid_uuid_token");
         request.setNewPassword("freshPassword123");
 
-        when(userRepository.findAll()).thenReturn(List.of(mockUser));
+        // 💡 ĐÃ SỬA: Thay đổi từ findAll() thành findByResetToken() khớp khít với logic Service mới
+        when(userRepository.findByResetToken("valid_uuid_token")).thenReturn(Optional.of(mockUser));
         when(passwordEncoder.encode("freshPassword123")).thenReturn("new_hashed_password");
 
         authService.resetPassword(request);
 
-        assertNull(mockUser.getResetToken()); // Ép buộc Token phải chuyển về null (Single-use token)
+        assertNull(mockUser.getResetToken()); // Đảm bảo Single-use token hoạt động đúng
         assertNull(mockUser.getResetTokenExpiry());
         assertEquals("new_hashed_password", mockUser.getPasswordHash());
         verify(userRepository, times(1)).save(mockUser);

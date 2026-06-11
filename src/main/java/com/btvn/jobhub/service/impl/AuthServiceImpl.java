@@ -9,8 +9,8 @@ import com.btvn.jobhub.exception.BadRequestException;
 import com.btvn.jobhub.exception.ResourceConflictException;
 import com.btvn.jobhub.exception.ResourceNotFoundException;
 import com.btvn.jobhub.exception.UnauthorizedException;
-import com.btvn.jobhub.repository.TokenBlacklistRepository;
-import com.btvn.jobhub.repository.UserRepository;
+import com.btvn.jobhub.repository.jpa.UserRepository;
+import com.btvn.jobhub.repository.redis.TokenBlacklistRepository;
 import com.btvn.jobhub.security.jwt.JwtTokenProvider;
 import com.btvn.jobhub.service.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -113,17 +113,19 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    @Transactional
     public void logout(String accessToken) {
         if (tokenProvider.validateToken(accessToken)) {
             String email = tokenProvider.getEmailFromJwt(accessToken);
-            User user = userRepository.findByEmail(email)
-                    .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy thông tin người dùng."));
+            long remainingTimeMs = tokenProvider.getRemainingTimeMs(accessToken);
+
+            if (remainingTimeMs <= 0) {
+                remainingTimeMs = 1000;
+            }
 
             TokenBlacklist blacklistEntry = TokenBlacklist.builder()
                     .tokenString(accessToken)
-                    .revokedAt(LocalDateTime.now())
-                    .user(user)
+                    .email(email)
+                    .ttl(remainingTimeMs)
                     .build();
 
             tokenBlacklistRepository.save(blacklistEntry);

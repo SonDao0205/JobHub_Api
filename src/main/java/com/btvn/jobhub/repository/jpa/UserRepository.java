@@ -1,4 +1,4 @@
-package com.btvn.jobhub.repository;
+package com.btvn.jobhub.repository.jpa;
 import com.btvn.jobhub.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

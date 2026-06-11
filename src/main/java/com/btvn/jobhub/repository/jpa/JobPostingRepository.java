@@ -1,4 +1,4 @@
-package com.btvn.jobhub.repository;
+package com.btvn.jobhub.repository.jpa;
 import com.btvn.jobhub.entity.JobPosting;
 import com.btvn.jobhub.entity.enumType.JobStatusEnum;
 import org.springframework.data.domain.Page;
