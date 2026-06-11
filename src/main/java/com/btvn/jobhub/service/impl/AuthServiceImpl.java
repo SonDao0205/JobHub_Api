@@ -27,6 +27,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -75,6 +76,7 @@ public class AuthServiceImpl implements AuthService {
 
             String role = authentication.getAuthorities().stream()
                     .map(GrantedAuthority::getAuthority)
+                    .filter(Objects::nonNull)
                     .findFirst()
                     .orElse("");
 
