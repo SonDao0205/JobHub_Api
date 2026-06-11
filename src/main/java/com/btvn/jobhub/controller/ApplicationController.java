@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 
 @RestController
-@RequestMapping("/api/applications")
+@RequestMapping("/api/v1/applications")
 @RequiredArgsConstructor
 public class ApplicationController {
 
