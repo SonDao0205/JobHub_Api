@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,11 +26,11 @@ public class JwtTokenProvider {
     @Value("${jwt-refresh-expiration-ms}")
     private long jwtRefreshExpirationMs;
 
-    private Key key;
+    private SecretKey key;
 
     @PostConstruct
     public void init() {
-        this.key = Keys.hmacShaKeyFor(jwtSecret.getBytes());
+        this.key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
     }
 
     public String generateAccessToken(Authentication authentication) {
@@ -53,26 +52,29 @@ public class JwtTokenProvider {
         claims.put("role", userPrincipal.getAuthorities().iterator().next().getAuthority());
 
         return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(userPrincipal.getEmail())
-                .setIssuedAt(now)
-                .setExpiration(expiryDate)
-                .signWith(key, SignatureAlgorithm.HS256)
+                .claims(claims)
+                .subject(userPrincipal.getEmail())
+                .issuedAt(now)
+                .expiration(expiryDate)
+                .signWith(key)
                 .compact();
     }
 
     public String getEmailFromJwt(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(key)
+                .verifyWith(key)
                 .build()
-                .parseClaimsJws(token)
-                .getBody();
+                .parseSignedClaims(token)
+                .getPayload();
         return claims.getSubject();
     }
 
     public boolean validateToken(String authToken) {
         try {
-            Jwts.parser().setSigningKey(key).build().parseClaimsJws(authToken);
+            Jwts.parser()
+                    .verifyWith(key)
+                    .build()
+                    .parseSignedClaims(authToken);
             return true;
         } catch (JwtException | IllegalArgumentException ex) {
             return false;
@@ -80,8 +82,6 @@ public class JwtTokenProvider {
     }
 
     public long getRemainingTimeMs(String token) {
-        SecretKey key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
-
         Claims claims = Jwts.parser()
                 .verifyWith(key)
                 .build()
