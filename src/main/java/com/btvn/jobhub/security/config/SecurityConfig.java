@@ -53,21 +53,20 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        // Public endpoints
                         .requestMatchers("/api/v1/auth/register", "/api/v1/auth/login", "/api/v1/auth/refresh", "/api/v1/auth/forgot-password", "/api/v1/auth/reset-password").permitAll()
                         .requestMatchers("/api/v1/auth/change-password").authenticated()
-                        .requestMatchers("/api/v1/users/**").hasRole("ADMIN")
                         .requestMatchers("/api/v1/jobs/search").hasAnyRole("ADMIN", "EMPLOYER", "CANDIDATE")
-                        .requestMatchers("/api/v1/jobs/createJob").hasRole("EMPLOYER")
-                        .requestMatchers("/api/v1/jobs/*/submit-approval").hasRole("EMPLOYER")
-                        .requestMatchers("/api/v1/jobs/*/close").hasRole("EMPLOYER")
-                        .requestMatchers("/api/v1/jobs/*/approve").hasRole("ADMIN")
-                        .requestMatchers("/api/v1/jobs/*/reject").hasRole("ADMIN")
-                        .requestMatchers("/api/v1/applications/apply").hasRole("CANDIDATE")
-                        .requestMatchers("/api/v1/applications/history").hasRole("CANDIDATE")
-                        .requestMatchers("/api/v1/applications/*/review").hasRole("EMPLOYER")
-                        .requestMatchers("/api/v1/applications/*/interview").hasRole("EMPLOYER")
-                        .requestMatchers("/api/v1/applications/*/accept").hasRole("EMPLOYER")
-                        .requestMatchers("/api/v1/applications/*/reject").hasRole("EMPLOYER")
+
+                        // ADMIN Path rules
+                        .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
+
+                        // EMPLOYER Path rules
+                        .requestMatchers("/api/v1/employer/**").hasRole("EMPLOYER")
+
+                        // CANDIDATE Path rules
+                        .requestMatchers("/api/v1/candidate/**").hasRole("CANDIDATE")
+
                         .anyRequest().permitAll()
                 );
 

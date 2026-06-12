@@ -37,9 +37,27 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     @Transactional
-    public ApplicationResponse applyForJob(Long jobPostingId, String coverLetter, MultipartFile cvFile, Long candidateId) {
+    public String uploadCandidateCv(Long candidateId, MultipartFile cvFile) {
         if (cvFile == null || cvFile.isEmpty()) {
-            throw new BadRequestException("Vui lòng tải lên file hồ sơ CV của bạn.");
+            throw new BadRequestException("Vui lòng đính kèm tệp tin hợp lệ.");
+        }
+        User candidate = userRepository.findById(candidateId)
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy thông tin ứng viên."));
+
+        String generatedCvUrl = cloudinaryService.uploadFile(cvFile);
+        candidate.setCvUrl(generatedCvUrl);
+        userRepository.save(candidate);
+        return generatedCvUrl;
+    }
+
+    @Override
+    @Transactional
+    public ApplicationResponse applyForJob(Long jobPostingId, String coverLetter, Long candidateId) {
+        User candidate = userRepository.findById(candidateId)
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy thông tin ứng viên có ID: " + candidateId));
+
+        if (!org.springframework.util.StringUtils.hasText(candidate.getCvUrl())) {
+            throw new BadRequestException("Hồ sơ của bạn chưa có CV. Vui lòng cập nhật hoặc upload CV trước khi ứng tuyển.");
         }
 
         if (applicationRepository.existsByCandidateIdAndJobPostingId(candidateId, jobPostingId)) {
@@ -53,14 +71,9 @@ public class ApplicationServiceImpl implements ApplicationService {
             throw new BadRequestException("Tin tuyển dụng này hiện không mở nhận hồ sơ.");
         }
 
-        User candidate = userRepository.findById(candidateId)
-                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy thông tin ứng viên có ID: " + candidateId));
-
-        String generatedCvUrl = cloudinaryService.uploadFile(cvFile);
-
         Application application = Application.builder()
                 .coverLetter(coverLetter)
-                .cvUrl(generatedCvUrl)
+                .cvUrl(candidate.getCvUrl()) // Kế thừa link CV từ User profile
                 .appliedAt(LocalDateTime.now())
                 .status(ApplicationStatusEnum.PENDING)
                 .candidate(candidate)

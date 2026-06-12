@@ -1,11 +1,9 @@
 package com.btvn.jobhub.controller;
 
 import com.btvn.jobhub.dto.req.CreateUserRequest;
-import com.btvn.jobhub.dto.req.RegisterUserRequest;
 import com.btvn.jobhub.dto.req.UpdateUserStatusRequest;
 import com.btvn.jobhub.dto.res.ApiResponse;
 import com.btvn.jobhub.dto.res.UserResponse;
-import com.btvn.jobhub.entity.User;
 import com.btvn.jobhub.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,24 +13,23 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/v1/admin/users")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
 
     @GetMapping
     public ResponseEntity<ApiResponse<Page<UserResponse>>> getAllUsers(
+            @RequestParam(required = false) String keyword,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "5") int size,
             @RequestParam(defaultValue = "id") String sortBy) {
 
         Pageable pageable = PageRequest.of(page - 1, size, Sort.by(sortBy).descending());
-
-        Page<UserResponse> userPage = userService.getAllUsers(pageable);
+        Page<UserResponse> userPage = userService.getAllUsers(keyword, pageable);
 
         return ResponseEntity.ok(
                 ApiResponse.<Page<UserResponse>>builder()
@@ -61,7 +58,6 @@ public class UserController {
             @Valid @RequestBody UpdateUserStatusRequest request) {
 
         userService.toggleUserStatus(id, request.getIsActive());
-
         return ResponseEntity.ok(
                 ApiResponse.<Void>builder()
                         .success(true)
@@ -70,4 +66,14 @@ public class UserController {
         );
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse<Void>> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.ok(
+                ApiResponse.<Void>builder()
+                        .success(true)
+                        .message("Xóa người dùng thành công.")
+                        .build()
+        );
+    }
 }

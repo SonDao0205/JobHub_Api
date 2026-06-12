@@ -18,30 +18,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/jobs")
 @RequiredArgsConstructor
 public class JobPostingController {
 
     private final JobPostingService jobPostingService;
 
-    @PostMapping("/createJob")
-    public ResponseEntity<ApiResponse<JobPostingResponse>> createJob(
-            @Valid @RequestBody JobPostingRequest request,
-            @AuthenticationPrincipal UserPrincipal userPrincipal) {
-
-        Long employerId = userPrincipal.getId();
-        JobPostingResponse response = jobPostingService.createJob(request, employerId);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(
-                ApiResponse.<JobPostingResponse>builder()
-                        .success(true)
-                        .message("Tạo tin tuyển dụng thành công ở trạng thái chờ duyệt.")
-                        .data(response)
-                        .build()
-        );
-    }
-
-    @GetMapping("/search")
+    // --- DÙNG CHUNG / SEARCH ---
+    @GetMapping("/api/v1/jobs/search")
     public ResponseEntity<ApiResponse<Page<JobPostingResponse>>> getJobsByStatus(
             @RequestParam(required = false) JobStatusEnum status,
             @RequestParam(defaultValue = "1") int page,
@@ -61,63 +44,48 @@ public class JobPostingController {
         );
     }
 
-    @PutMapping("/{id}/submit-approval")
+    // --- EMPLOYER PATHS ---
+    @PostMapping("/api/v1/employer/jobs")
+    public ResponseEntity<ApiResponse<JobPostingResponse>> createJob(
+            @Valid @RequestBody JobPostingRequest request,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+
+        JobPostingResponse response = jobPostingService.createJob(request, userPrincipal.getId());
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                ApiResponse.<JobPostingResponse>builder()
+                        .success(true)
+                        .message("Tạo tin tuyển dụng thành công ở trạng thái chờ duyệt.")
+                        .data(response)
+                        .build()
+        );
+    }
+
+    @PutMapping("/api/v1/employer/jobs/{id}/submit-approval")
     public ResponseEntity<ApiResponse<JobPostingResponse>> submitJobForApproval(
-            @PathVariable Long id,
-            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+            @PathVariable Long id, @AuthenticationPrincipal UserPrincipal userPrincipal) {
 
-        Long employerId = userPrincipal.getId();
-        JobPostingResponse response = jobPostingService.submitJobForApproval(id, employerId);
-
-        return ResponseEntity.ok(
-                ApiResponse.<JobPostingResponse>builder()
-                        .success(true)
-                        .message("Gửi yêu cầu duyệt tin tuyển dụng thành công.")
-                        .data(response)
-                        .build()
-        );
+        JobPostingResponse response = jobPostingService.submitJobForApproval(id, userPrincipal.getId());
+        return ResponseEntity.ok(ApiResponse.<JobPostingResponse>builder().success(true).message("Gửi yêu cầu duyệt tin tuyển dụng thành công.").data(response).build());
     }
 
-    @PutMapping("/{id}/close")
+    @PutMapping("/api/v1/employer/jobs/{id}/close")
     public ResponseEntity<ApiResponse<JobPostingResponse>> closeJob(
-            @PathVariable Long id,
-            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+            @PathVariable Long id, @AuthenticationPrincipal UserPrincipal userPrincipal) {
 
-        Long employerId = userPrincipal.getId();
-        JobPostingResponse response = jobPostingService.closeJob(id, employerId);
-
-        return ResponseEntity.ok(
-                ApiResponse.<JobPostingResponse>builder()
-                        .success(true)
-                        .message("Đóng tin tuyển dụng thành công.")
-                        .data(response)
-                        .build()
-        );
+        JobPostingResponse response = jobPostingService.closeJob(id, userPrincipal.getId());
+        return ResponseEntity.ok(ApiResponse.<JobPostingResponse>builder().success(true).message("Đóng tin tuyển dụng thành công.").data(response).build());
     }
 
-    @PutMapping("/{id}/approve")
+    // --- ADMIN PATHS ---
+    @PutMapping("/api/v1/admin/jobs/{id}/approve")
     public ResponseEntity<ApiResponse<JobPostingResponse>> approveJob(@PathVariable Long id) {
         JobPostingResponse response = jobPostingService.approveJob(id);
-
-        return ResponseEntity.ok(
-                ApiResponse.<JobPostingResponse>builder()
-                        .success(true)
-                        .message("Phê duyệt tin tuyển dụng thành công. Tin hiện đã được hiển thị công khai.")
-                        .data(response)
-                        .build()
-        );
+        return ResponseEntity.ok(ApiResponse.<JobPostingResponse>builder().success(true).message("Phê duyệt tin tuyển dụng thành công.").data(response).build());
     }
 
-    @PutMapping("/{id}/reject")
+    @PutMapping("/api/v1/admin/jobs/{id}/reject")
     public ResponseEntity<ApiResponse<JobPostingResponse>> rejectJob(@PathVariable Long id) {
         JobPostingResponse response = jobPostingService.rejectJob(id);
-
-        return ResponseEntity.ok(
-                ApiResponse.<JobPostingResponse>builder()
-                        .success(true)
-                        .message("Đã từ chối phê duyệt tin tuyển dụng.")
-                        .data(response)
-                        .build()
-        );
+        return ResponseEntity.ok(ApiResponse.<JobPostingResponse>builder().success(true).message("Đã từ chối phê duyệt tin tuyển dụng.").data(response).build());
     }
 }

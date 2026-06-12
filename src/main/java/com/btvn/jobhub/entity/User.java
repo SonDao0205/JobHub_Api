@@ -27,6 +27,9 @@ public class User {
 
     private Boolean isActive;
 
+    @Column(name = "cv_url")
+    private String cvUrl;
+
     @OneToMany(mappedBy = "employer", cascade = CascadeType.ALL)
     private List<JobPosting> jobPostings;
 

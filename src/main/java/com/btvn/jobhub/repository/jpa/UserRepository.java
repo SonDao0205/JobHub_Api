@@ -15,5 +15,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Page<User> findAllByIsActiveTrue(Pageable pageable);
 
     Optional<User> findByResetToken(String resetToken);
-
+    Page<User>findByEmailContainingIgnoreCase(String keyword, Pageable pageable);
 }

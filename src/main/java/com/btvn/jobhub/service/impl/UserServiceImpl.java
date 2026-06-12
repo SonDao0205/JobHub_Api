@@ -44,9 +44,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<UserResponse> getAllUsers(Pageable pageable) {
-        Page<User> userPage = userRepository.findAll(pageable);
+    public Page<UserResponse> getAllUsers(String keyword, Pageable pageable) {
+        Page<User> userPage;
+        if (org.springframework.util.StringUtils.hasText(keyword)) {
+            userPage = userRepository.findByEmailContainingIgnoreCase(keyword, pageable);
+        } else {
+            userPage = userRepository.findAll(pageable);
+        }
         return userPage.map(this::convertToUserResponse);
+    }
+
+    @Override
+    @Transactional
+    public void deleteUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy người dùng cần xóa có ID: " + userId));
+        userRepository.delete(user);
     }
 
     @Override
