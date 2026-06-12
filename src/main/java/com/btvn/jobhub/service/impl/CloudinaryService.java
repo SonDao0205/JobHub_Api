@@ -18,7 +18,7 @@ public class CloudinaryService {
     private final Cloudinary cloudinary;
 
     private static final List<String> ALLOWED_CONTENT_TYPES = List.of(
-            "application/pdf", "image/jpeg", "image/png"
+            "application/pdf"
     );
 
     private static final long MAX_FILE_SIZE_BYTES = 15 * 1024 * 1024;
@@ -34,12 +34,12 @@ public class CloudinaryService {
 
         String contentType = file.getContentType();
         if (contentType == null || !ALLOWED_CONTENT_TYPES.contains(contentType.toLowerCase())) {
-            throw new BadRequestException("Định dạng file không hợp lệ! Hệ thống chỉ chấp nhận file định dạng PDF, JPG, hoặc PNG.");
+            throw new BadRequestException("Định dạng file không hợp lệ! Hệ thống chỉ chấp nhận file định dạng PDF.");
         }
 
         try {
             Map uploadResult = cloudinary.uploader().upload(file.getBytes(),
-                    ObjectUtils.asMap("resource_type", "auto"));
+                    ObjectUtils.asMap("resource_type", "raw"));
 
             return uploadResult.get("secure_url").toString();
         } catch (IOException e) {

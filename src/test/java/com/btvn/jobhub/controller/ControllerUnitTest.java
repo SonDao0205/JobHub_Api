@@ -3,6 +3,7 @@ package com.btvn.jobhub.controller;
 import com.btvn.jobhub.dto.req.*;
 import com.btvn.jobhub.dto.res.*;
 import com.btvn.jobhub.entity.enumType.JobStatusEnum;
+import com.btvn.jobhub.exception.BadRequestException;
 import com.btvn.jobhub.security.principal.UserPrincipal;
 import com.btvn.jobhub.service.*;
 import org.junit.jupiter.api.Test;
@@ -35,6 +36,25 @@ class ControllerUnitTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertTrue(response.getBody().isSuccess());
         assertEquals("https://cloudinary.com/cv/123.pdf", response.getBody().getData());
+    }
+
+    @Test
+    void candidateUploadCvInvalidTypeThrowsException() {
+        ApplicationService applicationService = mock(ApplicationService.class);
+        ApplicationController controller = new ApplicationController(applicationService);
+
+        UserPrincipal principal = samplePrincipal(1L, "candidate@gmail.com", "ROLE_CANDIDATE");
+
+        MockMultipartFile invalidFile = new MockMultipartFile("cvFile", "avatar.jpg", "image/jpeg", "fake-image-content".getBytes());
+
+        when(applicationService.uploadCandidateCv(eq(1L), any()))
+                .thenThrow(new BadRequestException("Định dạng file không hợp lệ! Hệ thống chỉ chấp nhận file định dạng PDF."));
+
+        BadRequestException exception = assertThrows(BadRequestException.class, () -> {
+            controller.uploadCv(invalidFile, principal);
+        });
+
+        assertEquals("Định dạng file không hợp lệ! Hệ thống chỉ chấp nhận file định dạng PDF.", exception.getMessage());
     }
 
     @Test
