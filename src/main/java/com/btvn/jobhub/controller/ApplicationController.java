@@ -25,7 +25,6 @@ public class ApplicationController {
 
     private final ApplicationService applicationService;
 
-    // --- CANDIDATE ENDPOINTS ---
 
     @PostMapping(value = "/api/v1/candidate/upload-cv", consumes = MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ApiResponse<String>> uploadCv(
@@ -62,7 +61,6 @@ public class ApplicationController {
         return ResponseEntity.ok(ApiResponse.<Page<ApplicationResponse>>builder().success(true).message("Lấy lịch sử ứng tuyển thành công.").data(responsePage).build());
     }
 
-    // --- EMPLOYER ENDPOINTS ---
 
     @PutMapping("/api/v1/employer/applications/{id}/review")
     public ResponseEntity<ApiResponse<ApplicationResponse>> reviewApp(

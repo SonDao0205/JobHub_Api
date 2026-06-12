@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class PerformanceLoggingAspect {
 
-    // Pointcut target toàn bộ các public methods nằm bên trong Controller package
     @Pointcut("within(com.btvn.jobhub.controller..*)")
     public void controllerPointcut() {}
 
@@ -22,7 +21,6 @@ public class PerformanceLoggingAspect {
     public Object logExecutionTimeAndUser(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
 
-        // Lấy thông tin user hiện tại từ Security Context
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = (authentication != null && authentication.isAuthenticated())
                 ? authentication.getName()

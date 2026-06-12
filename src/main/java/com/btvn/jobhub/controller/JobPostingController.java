@@ -23,7 +23,6 @@ public class JobPostingController {
 
     private final JobPostingService jobPostingService;
 
-    // --- DÙNG CHUNG / SEARCH ---
     @GetMapping("/api/v1/jobs/search")
     public ResponseEntity<ApiResponse<Page<JobPostingResponse>>> getJobsByStatus(
             @RequestParam(required = false) JobStatusEnum status,
@@ -44,7 +43,6 @@ public class JobPostingController {
         );
     }
 
-    // --- EMPLOYER PATHS ---
     @PostMapping("/api/v1/employer/jobs")
     public ResponseEntity<ApiResponse<JobPostingResponse>> createJob(
             @Valid @RequestBody JobPostingRequest request,
@@ -76,7 +74,6 @@ public class JobPostingController {
         return ResponseEntity.ok(ApiResponse.<JobPostingResponse>builder().success(true).message("Đóng tin tuyển dụng thành công.").data(response).build());
     }
 
-    // --- ADMIN PATHS ---
     @PutMapping("/api/v1/admin/jobs/{id}/approve")
     public ResponseEntity<ApiResponse<JobPostingResponse>> approveJob(@PathVariable Long id) {
         JobPostingResponse response = jobPostingService.approveJob(id);
