@@ -161,6 +161,7 @@ public class AuthServiceImpl implements AuthService {
 
         String token = UUID.randomUUID().toString();
         user.setResetToken(token);
+        System.out.println("Forgot password token: " + token);
         user.setResetTokenExpiry(LocalDateTime.now().plusMinutes(15));
         userRepository.save(user);
     }
